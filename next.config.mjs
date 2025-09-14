@@ -51,24 +51,10 @@ const nextConfig = {
 
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
-    // Optimize for production
+    // Only optimize for production builds, not development
     if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-          webgl: {
-            test: /[\\/]node_modules[\\/](three|ogl|postprocessing)[\\/]/,
-            name: 'webgl',
-            chunks: 'all',
-            priority: 10,
-          },
-        },
-      }
+      // Let Next.js handle chunking by default
+      // Only add specific optimizations if needed
     }
 
     return config
