@@ -115,7 +115,7 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background scroll-smooth">
+    <div className="min-h-screen bg-gray-900 scroll-smooth">
         {/* Optimized Scroll Progress Bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-50 origin-left gpu-accelerated"
@@ -300,7 +300,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 relative overflow-hidden page-transition">
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/30 relative overflow-hidden page-transition">
         {/* Optimized floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {useMemo(() => 
@@ -501,7 +501,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 relative overflow-hidden page-transition">
+      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-800/20 via-gray-700/10 to-gray-800/20 relative overflow-hidden page-transition">
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
         
