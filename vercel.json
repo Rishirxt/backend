@@ -1,5 +1,10 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "installCommand": "npm install",
-  "framework": "nextjs"
+  "buildCommand": "rm -f pnpm-lock.yaml && npm install && npm run build",
+  "installCommand": "rm -f pnpm-lock.yaml && npm install",
+  "framework": "nextjs",
+  "functions": {
+    "app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
