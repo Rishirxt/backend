@@ -57,12 +57,6 @@ const nextConfig = {
       // Only add specific optimizations if needed
     }
 
-    // Ensure proper module resolution
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': require('path').resolve(__dirname),
-    }
-
     return config
   },
 }
