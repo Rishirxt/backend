@@ -50,7 +50,7 @@ export default function TestFormPage() {
 
       console.log("Submitting data:", submissionData)
 
-      const response = await fetch('http://localhost:5000/submit', {
+      const response = await fetch('https://ysoc-backend.onrender.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

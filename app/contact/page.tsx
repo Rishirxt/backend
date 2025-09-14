@@ -60,7 +60,7 @@ export default function ContactPage() {
 
     try {
       // Send data to Flask backend API
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('https://ysoc-backend.onrender.com/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

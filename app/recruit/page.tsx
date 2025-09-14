@@ -107,7 +107,7 @@ export default function RecruitPage() {
       }
 
       // Send data to Flask backend
-      const response = await fetch('http://localhost:5000/submit', {
+      const response = await fetch('https://ysoc-backend.onrender.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
