@@ -2,16 +2,5 @@
   "version": 2,
   "buildCommand": "npm run vercel-build",
   "installCommand": "rm -f pnpm-lock.yaml yarn.lock && (npm ci || npm install)",
-  "framework": "nextjs",
-  "functions": {
-    "app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ]
+  "framework": "nextjs"
 }
