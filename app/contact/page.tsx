@@ -90,7 +90,7 @@ export default function ContactPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gray-900">
         <Navigation />
         <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
@@ -102,7 +102,7 @@ export default function ContactPage() {
               <div className="w-20 h-20 rounded-full gradient-primary flex items-center justify-center mx-auto mb-6 neon-glow">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
-              <h1 className="text-4xl font-bold gradient-text mb-6">Message Sent!</h1>
+              <h1 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Message Sent!</h1>
               <p className="text-xl text-muted-foreground mb-8">
                 Thank you for reaching out to us! Your message has been successfully sent and our team will review it soon.
               </p>
@@ -120,7 +120,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -133,10 +133,10 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Get In Touch
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Contact Y-SoC</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Contact Y-SoC</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Have questions, ideas, or want to get involved? We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible.
             </p>
@@ -192,7 +192,7 @@ export default function ContactPage() {
             >
               <Card className="border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-2xl gradient-text">Send us a Message</CardTitle>
+                  <CardTitle className="text-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Send us a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">

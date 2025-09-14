@@ -86,7 +86,7 @@ export default function TimelinePage() {
 
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -112,11 +112,11 @@ export default function TimelinePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Program Flow
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Your 6-Month Journey</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Your 6-Month Journey</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               From registration to showcase, follow the complete Y-SoC timeline and see how you'll grow as a developer
               and contributor to the open-source community.
             </p>
@@ -135,19 +135,19 @@ export default function TimelinePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Program Flow</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Program Flow</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Each phase is carefully designed to maximize learning, collaboration, and project success
             </p>
           </motion.div>
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary transform md:-translate-x-0.5" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-cyan-400 to-blue-500 transform md:-translate-x-0.5 shadow-lg shadow-blue-500/50" />
 
             {/* Single Moving Dot */}
             <motion.div 
-              className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-primary border-4 border-background transform -translate-x-3 md:-translate-x-3 z-20"
+              className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-gray-900 transform -translate-x-3 md:-translate-x-3 z-20 shadow-lg shadow-blue-500/50"
               style={{
                 y: dotY,
                 scale: dotPulse,
@@ -214,8 +214,8 @@ export default function TimelinePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Ready to Start Your Journey?</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Ready to Start Your Journey?</h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Don't miss out on this incredible opportunity to grow, learn, and contribute to meaningful projects. Your
               open-source journey starts with a single application.
             </p>

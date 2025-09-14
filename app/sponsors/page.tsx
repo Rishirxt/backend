@@ -13,7 +13,7 @@ import { Crown, Heart, Mail, Gift, Users, Zap } from "lucide-react"
 
 export default function SponsorsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
       
       {/* Hero Section */}
@@ -50,9 +50,9 @@ export default function SponsorsPage() {
             animate={animations.slideUp.animate}
             transition={getTransition(0.8)}
           >
-            <span className="gradient-text">Become Our</span>
+            <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Become Our</span>
             <br />
-            <span className="gradient-text">Sponsor</span>
+            <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Sponsor</span>
           </motion.h1>
 
           <motion.p
@@ -98,7 +98,7 @@ export default function SponsorsPage() {
             transition={animations.scrollReveal.transition}
             viewport={animations.scrollReveal.viewport}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Why Sponsor Y-SoC?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Why Sponsor Y-SoC?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Partner with us to make a meaningful impact on the future of open source development and youth education.
             </p>

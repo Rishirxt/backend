@@ -102,7 +102,7 @@ export default function TeamPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -115,10 +115,10 @@ export default function TeamPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Meet Our Team
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">The People Behind ysoc</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">The People Behind ysoc</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our diverse team of organizers, mentors, and contributors from around the world are united by a shared
               passion for open source and youth empowerment.
@@ -137,7 +137,7 @@ export default function TeamPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Core Team</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Core Team</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               The dedicated organizers who make ysoc possible
             </p>
@@ -249,7 +249,7 @@ export default function TeamPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Want to Join Our Team?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Want to Join Our Team?</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               We're always looking for passionate individuals to help grow the ysoc community. Whether as a mentor,
               organizer, or contributor, there's a place for you.
