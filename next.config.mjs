@@ -57,6 +57,12 @@ const nextConfig = {
       // Only add specific optimizations if needed
     }
 
+    // Ensure proper module resolution for @ alias
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': new URL('.', import.meta.url).pathname,
+    }
+
     return config
   },
 }
