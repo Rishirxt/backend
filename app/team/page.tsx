@@ -15,7 +15,7 @@ export default function TeamPage() {
       name: "Punya Mittal",
       role: "Founder",
       location: "Delhi, India",
-      bio: "Founder of ysoc, driven to empower youth through open source. Experienced in leading communities and building global collaborations.",
+      bio: "Founder of Y-SoC, driven to empower youth through open source. Experienced in leading communities and building global collaborations.",
       image: "/mittal.jpg",
       skills: ["Leadership", "Open Source", "Community Building"],
       social: {
@@ -26,7 +26,7 @@ export default function TeamPage() {
       name: "Ayush Vaish",
       role: "Programme Director",
       location: "Delhi, India",
-      bio: "Oversees program structure and execution at ysoc. Skilled in managing large-scale initiatives and ensuring smooth operations.",
+      bio: "Oversees program structure and execution at Y-SoC. Skilled in managing large-scale initiatives and ensuring smooth operations.",
       image: "/ay.jpg",
       skills: ["Program Management", "System Design", "Mentorship"],
       social: {
@@ -48,7 +48,7 @@ export default function TeamPage() {
       name: "Vaibhav Raj",
       role: "Technical Head",
       location: "Jharkhand, India",
-      bio: "Leads the technical direction of ysoc, ensuring scalable and innovative solutions. Passionate about clean design and accessible technology.",
+      bio: "Leads the technical direction of Y-SoC, ensuring scalable and innovative solutions. Passionate about clean design and accessible technology.",
       image: "/vr.jpg",
       skills: ["Full-Stack Development", "System Architecture", "Accessibility"],
       social: {
@@ -70,7 +70,7 @@ export default function TeamPage() {
       name: "Nayonika Nair",
       role: "Design and UI/UX Head",
       location: "Karnataka, India",
-      bio: "Leads the design vision of ysoc. Focused on crafting engaging, modern, and accessible user experiences for the community.",
+      bio: "Leads the design vision of Y-SoC. Focused on crafting engaging, modern, and accessible user experiences for the community.",
       image: "/nyonika.jpg",
       skills: ["UI/UX", "Design Thinking", "Prototyping"],
       social: {
@@ -81,7 +81,7 @@ export default function TeamPage() {
       name: "Aryaman Kumar Singh",
       role: "Documentation and Content Head",
       location: "Jharkhand, India",
-      bio: "Responsible for creating and managing clear, structured documentation. Dedicated to making ysoc processes transparent and accessible.",
+      bio: "Responsible for creating and managing clear, structured documentation. Dedicated to making Y-SoC processes transparent and accessible.",
       image: "/ar.jpeg",
       skills: ["Technical Writing", "Documentation", "Content Strategy"],
       social: {
@@ -92,7 +92,7 @@ export default function TeamPage() {
       name: "Sahil Poply",
       role: "Code of Conduct Head",
       location: "Madhya Pradesh, India",
-      bio: "Ensures a safe, inclusive, and collaborative environment at ysoc. Advocates for diversity and fair practices in open-source communities.",
+      bio: "Ensures a safe, inclusive, and collaborative environment at Y-SoC. Advocates for diversity and fair practices in open-source communities.",
       image: "/sa.jpg",
       skills: ["Community Guidelines", "Policy Making", "Conflict Resolution"],
       social: {
@@ -118,7 +118,7 @@ export default function TeamPage() {
             <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Meet Our Team
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">The People Behind ysoc</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">The People Behind Y-SoC</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our diverse team of organizers, mentors, and contributors from around the world are united by a shared
               passion for open source and youth empowerment.
@@ -139,7 +139,7 @@ export default function TeamPage() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Core Team</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The dedicated organizers who make ysoc possible
+              The dedicated organizers who make Y-SoC possible
             </p>
           </motion.div>
 
@@ -251,7 +251,7 @@ export default function TeamPage() {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Want to Join Our Team?</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              We're always looking for passionate individuals to help grow the ysoc community. Whether as a mentor,
+              We're always looking for passionate individuals to help grow the Y-SoC community. Whether as a mentor,
               organizer, or contributor, there's a place for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
