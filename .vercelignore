@@ -1,0 +1,18 @@
+# Ignore temporary files
+backend/~$*.xlsx
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Ignore development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
