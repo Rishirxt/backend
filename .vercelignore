@@ -16,3 +16,11 @@ __pycache__/
 # Ignore OS files
 .DS_Store
 Thumbs.db
+
+# Ignore lock files that might cause conflicts
+pnpm-lock.yaml
+yarn.lock
+
+# Ignore build artifacts
+.next/
+node_modules/

@@ -1,10 +1,17 @@
 {
-  "buildCommand": "rm -f pnpm-lock.yaml && npm install && npm run build",
-  "installCommand": "rm -f pnpm-lock.yaml && npm install",
+  "version": 2,
+  "buildCommand": "rm -f pnpm-lock.yaml yarn.lock && npm ci && npm run build",
+  "installCommand": "rm -f pnpm-lock.yaml yarn.lock && npm ci",
   "framework": "nextjs",
   "functions": {
     "app/api/**/*.ts": {
       "runtime": "nodejs18.x"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ]
 }
