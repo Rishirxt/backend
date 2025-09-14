@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
 import os
 from datetime import datetime
 import json
@@ -272,8 +271,21 @@ def get_applications():
                 "message": "No applications found"
             }), 200
         
-        df = pd.read_excel(EXCEL_FILE_PATH, sheet_name=SHEET_NAME)
-        applications = df.to_dict('records')
+        # Read Excel file using openpyxl instead of pandas
+        wb = load_workbook(EXCEL_FILE_PATH)
+        ws = wb[SHEET_NAME]
+        
+        # Convert to list of dictionaries
+        applications = []
+        headers = [cell.value for cell in ws[1]]
+        
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            if any(row):  # Skip empty rows
+                app_data = {}
+                for i, value in enumerate(row):
+                    if i < len(headers):
+                        app_data[headers[i]] = value
+                applications.append(app_data)
         
         return jsonify({
             "status": "success",
