@@ -79,7 +79,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -99,11 +99,13 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               About Y-SoC
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Empowering Youth Through Open Source</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+              Empowering Youth Through Open Source
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Y-SoC is more than a program—it's a movement that connects passionate young developers worldwide to
               create, collaborate, and contribute to meaningful open-source projects.
             </p>
@@ -112,7 +114,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div
@@ -125,7 +127,7 @@ export default function AboutPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Target className="w-8 h-8 text-primary mr-3" />
-                    <h2 className="text-3xl font-bold gradient-text">Our Mission</h2>
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Mission</h2>
                   </div>
                   <p className="text-lg text-muted-foreground leading-relaxed">
                     To create a global platform where young developers can learn, grow, and contribute to open-source
@@ -146,7 +148,7 @@ export default function AboutPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
                     <Eye className="w-8 h-8 text-secondary mr-3" />
-                    <h2 className="text-3xl font-bold gradient-text">Our Vision</h2>
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Vision</h2>
                   </div>
                   <p className="text-lg text-muted-foreground leading-relaxed">
                     To become the world's leading youth-driven open-source community, fostering innovation and
@@ -178,7 +180,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Our Values</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Our Values</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               The principles that guide everything we do in the Y-SoC community
             </p>
@@ -209,7 +211,7 @@ export default function AboutPage() {
       </section>
 
       {/* Member Categories */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/30">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -218,7 +220,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Community Roles</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Community Roles</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Discover where you fit in our diverse community of creators, collaborators, and innovators
             </p>
@@ -275,7 +277,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Ready to Join Our Community?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Ready to Join Our Community?</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Whether you're a seasoned developer or just starting out, there's a place for you in Y-SoC. Let's build
               the future of open source together.
