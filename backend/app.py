@@ -295,7 +295,10 @@ if __name__ == '__main__':
     print(f"Excel file will be created at: {os.path.abspath(EXCEL_FILE_PATH)}")
     print("Available endpoints:")
     print("  POST /submit - Submit application form")
+    print("  POST /contact - Submit contact form")
     print("  GET /health - Health check")
     print("  GET /applications - Get all applications")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Get port from environment variable (for Render) or default to 5000
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
