@@ -106,23 +106,23 @@ export default function PartnersPage() {
                 whileHover={animations.card.whileHover}
                 className="group"
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/50 group-hover:bg-gradient-to-br group-hover:from-primary/5 group-hover:to-secondary/5">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-24 h-24 mx-auto mb-6 bg-muted rounded-lg flex items-center justify-center">
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-6">
+                    <div className="w-24 h-24 mx-auto mb-6 bg-gray-800/50 rounded-xl flex items-center justify-center border border-gray-600/30">
                       <img 
                         src={partner.logo} 
                         alt={partner.name}
                         className="w-20 h-20 object-contain"
                       />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
                       {partner.name}
                     </h3>
-                    <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
                       {partner.description}
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
