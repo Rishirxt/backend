@@ -127,9 +127,7 @@ export default function AboutPage() {
                 <div className="p-8">
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mr-4 shadow-lg shadow-blue-500/30">
-                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <div className="w-2 h-2 rounded-full bg-white"></div>
-                      </div>
+                      <Target className="w-6 h-6 text-white" />
                     </div>
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Mission</h2>
                   </div>
@@ -152,9 +150,7 @@ export default function AboutPage() {
                 <div className="p-8">
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 flex items-center justify-center mr-4 shadow-lg shadow-cyan-500/30">
-                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <div className="w-3 h-3 rounded-full bg-white"></div>
-                      </div>
+                      <Eye className="w-6 h-6 text-white" />
                     </div>
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Vision</h2>
                   </div>
@@ -203,15 +199,15 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full text-center hover:shadow-lg transition-shadow bg-background/80 backdrop-blur-sm">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center mx-auto mb-6 neon-glow">
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-8">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
                       <value.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-4 text-foreground">{value.title}</h3>
-                    <p className="text-muted-foreground">{value.description}</p>
-                  </CardContent>
-                </Card>
+                    <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
+                    <p className="text-gray-300">{value.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -234,7 +230,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {memberCategories.map((category, index) => (
               <motion.div
                 key={category.title}
@@ -243,38 +239,40 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                  <CardContent className="p-8">
+                <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-8">
                     <div className="flex flex-col lg:flex-row items-start gap-6">
-                      <div className="flex items-center gap-4 lg:min-w-0 lg:flex-1">
+                      <div className="flex items-start gap-4 lg:min-w-0 lg:flex-1">
                         <div
-                          className={`w-16 h-16 rounded-xl ${category.color} flex items-center justify-center neon-glow`}
+                          className={`w-12 h-12 rounded-full ${category.color} flex items-center justify-center shadow-lg`}
                         >
-                          <category.icon className="w-8 h-8 text-white" />
+                          <category.icon className="w-6 h-6 text-white" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                          <h3 className="text-2xl font-bold mb-3 text-white">
                             {category.title}
                           </h3>
-                          <p className="text-muted-foreground leading-relaxed">
+                          <p className="text-gray-300 leading-relaxed">
                             {category.description}
                           </p>
                         </div>
                       </div>
-                      <div className="flex flex-wrap gap-2 lg:min-w-0 lg:flex-1">
-                        {category.skills.map((skill, skillIndex) => (
-                          <Badge
-                            key={skillIndex}
-                            variant="secondary"
-                            className="px-3 py-1 text-sm"
-                          >
-                            {skill}
-                          </Badge>
-                        ))}
+                      <div className="lg:min-w-0 lg:flex-1">
+                        <h4 className="text-sm font-semibold text-gray-400 mb-3">Key Skills & Responsibilities</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {category.skills.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-3 py-1 bg-gray-800/50 text-gray-300 text-sm rounded-full border border-gray-600/50"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
