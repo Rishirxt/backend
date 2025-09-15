@@ -42,7 +42,7 @@ export default function ContactPage() {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email",
-      contact: "ysoc.team@gmail.com",
+      contact: "team@ysoc.in",
       action: "Send Email",
     },
     {
@@ -170,7 +170,7 @@ export default function ContactPage() {
                         className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
                         onClick={() => {
                           if (info.title === "Email Us") {
-                            window.open("https://mail.google.com/mail/?view=cm&fs=1&to=ysoc.team@gmail.com", "_blank");
+                            window.open("https://mail.google.com/mail/?view=cm&fs=1&to=team@ysoc.in", "_blank");
                           }
                         }}
                       >

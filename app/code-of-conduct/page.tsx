@@ -353,7 +353,7 @@ export default function CodeOfConductPage() {
                   To report violations or ask questions about this code of conduct, please contact our team:
                 </p>
                 <div className="space-y-2">
-                  <p><strong>Email:</strong> ysoc.team@gmail.com</p>
+                  <p><strong>Email:</strong> team@ysoc.in</p>
                 </div>
                 <Button asChild className="mt-4">
                   <Link href="/contact">

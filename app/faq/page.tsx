@@ -128,7 +128,7 @@ export default function FAQPage() {
         },
         {
           question: "How do I get help if I have questions?",
-          answer: "You can reach out through multiple channels: direct message your mentor, post in community channels, email our support team at ysoc.team@gmail.com, or attend office hours. We're here to help you succeed!"
+          answer: "You can reach out through multiple channels: direct message your mentor, post in community channels, email our support team at team@ysoc.in, or attend office hours. We're here to help you succeed!"
         },
         {
           question: "Is there a code of conduct?",
@@ -265,7 +265,7 @@ export default function FAQPage() {
                 variant="outline"
                 size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-                onClick={() => window.open("https://mail.google.com/mail/?view=cm&fs=1&to=ysoc.team@gmail.com", "_blank")}
+                onClick={() => window.open("https://mail.google.com/mail/?view=cm&fs=1&to=team@ysoc.in", "_blank")}
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Email Us

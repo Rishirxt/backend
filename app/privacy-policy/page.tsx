@@ -386,7 +386,7 @@ export default function PrivacyPolicyPage() {
                 <div className="space-y-4 text-center">
                   <div className="flex items-center justify-center space-x-3">
                     <Mail className="w-5 h-5 text-primary" />
-                    <span><strong>Email:</strong> ysoc.team@gmail.com</span>
+                    <span><strong>Email:</strong> team@ysoc.in</span>
                   </div>
                 </div>
                 <div className="text-center">
