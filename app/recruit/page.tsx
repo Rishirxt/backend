@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Crown, Users, Code, Palette, GraduationCap, Send, CheckCircle, AlertCircle, Briefcase, BookOpen } from "lucide-react"
+import { Crown, Users, Code, Palette, GraduationCap, Send, CheckCircle, AlertCircle, Briefcase, BookOpen, Mail, MapPin, Briefcase as BriefcaseIcon, Star, Link as LinkIcon, Clock, Heart } from "lucide-react"
 
 export default function RecruitPage() {
   const [formData, setFormData] = useState({
@@ -231,26 +231,28 @@ export default function RecruitPage() {
                   className="cursor-pointer"
                   onClick={() => handleInputChange("role", role.value)}
                 >
-                  <Card
-                    className={`h-full transition-all duration-300 ease-in-out ${
+                  <div
+                    className={`h-full rounded-2xl border transition-all duration-300 ease-in-out ${
                       formData.role === role.value
-                        ? "border-primary shadow-lg neon-glow scale-105"
-                        : "border-border/50 hover:border-primary/30 hover:shadow-md"
+                        ? "border-blue-500/70 shadow-lg shadow-blue-500/20 scale-105 bg-blue-500/10"
+                        : "border-gray-700/30 hover:border-gray-600/50 hover:shadow-md bg-gray-900/50"
                     }`}
                   >
-                    <CardContent className="p-6 text-center">
+                    <div className="p-6 text-center">
                       {/* Modern Icon */}
                       <div className="mb-4">
-                        <role.icon className={`w-8 h-8 mx-auto ${role.iconColor} transition-colors duration-300`} />
+                        <div className={`w-12 h-12 rounded-full ${role.color.replace('text-', 'bg-')} flex items-center justify-center mx-auto shadow-lg`}>
+                          <role.icon className="w-6 h-6 text-white" />
+                        </div>
                       </div>
                       
                       {/* Role Title */}
-                      <h3 className={`font-semibold mb-2 text-lg ${role.color}`}>{role.label}</h3>
+                      <h3 className={`font-bold mb-2 text-lg ${role.color}`}>{role.label}</h3>
                       
                       {/* Description */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">{role.description}</p>
-                    </CardContent>
-                  </Card>
+                      <p className="text-sm text-gray-300 leading-relaxed">{role.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -266,56 +268,67 @@ export default function RecruitPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="border-border/50">
-              <CardHeader>
-                <CardTitle className="text-2xl gradient-text">Application Form</CardTitle>
-              </CardHeader>
-              <CardContent>
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-4">Application Form</h2>
+                  <p className="text-gray-300">Tell us about yourself and let's start your Y-SoC journey together!</p>
+                </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Personal Information */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange("firstName", e.target.value)}
-                        required
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input
-                        id="lastName"
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange("lastName", e.target.value)}
-                        required
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
-                      />
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <Users className="w-5 h-5 text-blue-400" />
+                      Personal Information
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="firstName" className="text-gray-300 font-medium">First Name *</Label>
+                        <Input
+                          id="firstName"
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange("firstName", e.target.value)}
+                          required
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                          placeholder="Enter your first name"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="lastName" className="text-gray-300 font-medium">Last Name *</Label>
+                        <Input
+                          id="lastName"
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange("lastName", e.target.value)}
+                          required
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                          placeholder="Enter your last name"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email" className="text-gray-300 font-medium">Email Address *</Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         required
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
+                        className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        placeholder="your.email@example.com"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="country">Country *</Label>
+                      <Label htmlFor="country" className="text-gray-300 font-medium">Country *</Label>
                       <Input
                         id="country"
                         value={formData.country}
                         onChange={(e) => handleInputChange("country", e.target.value)}
                         required
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
+                        className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        placeholder="Your country"
                       />
                     </div>
                   </div>
@@ -335,165 +348,195 @@ export default function RecruitPage() {
                   )}
 
                   {/* Experience Level */}
-                  <div className="space-y-2">
-                    <Label htmlFor="experience">Experience Level *</Label>
-                    <Select
-                      value={formData.experience}
-                      onValueChange={(value) => handleInputChange("experience", value)}
-                    >
-                      <SelectTrigger className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50 group">
-                        <SelectValue placeholder="Select your experience level" />
-                      </SelectTrigger>
-                      <SelectContent className="z-50">
-                        <SelectItem 
-                          value="beginner"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          Beginner (0-1 years)
-                        </SelectItem>
-                        <SelectItem 
-                          value="intermediate"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          Intermediate (1-3 years)
-                        </SelectItem>
-                        <SelectItem 
-                          value="advanced"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          Advanced (3-5 years)
-                        </SelectItem>
-                        <SelectItem 
-                          value="expert"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          Expert (5+ years)
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <Star className="w-5 h-5 text-blue-400" />
+                      Experience & Skills
+                    </h3>
+                    <div className="space-y-2">
+                      <Label htmlFor="experience" className="text-gray-300 font-medium">Experience Level *</Label>
+                      <Select
+                        value={formData.experience}
+                        onValueChange={(value) => handleInputChange("experience", value)}
+                      >
+                        <SelectTrigger className="bg-gray-900/50 border-gray-600/50 text-white focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50">
+                          <SelectValue placeholder="Select your experience level" />
+                        </SelectTrigger>
+                        <SelectContent className="z-50 bg-gray-900 border-gray-700">
+                          <SelectItem 
+                            value="beginner"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            Beginner (0-1 years)
+                          </SelectItem>
+                          <SelectItem 
+                            value="intermediate"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            Intermediate (1-3 years)
+                          </SelectItem>
+                          <SelectItem 
+                            value="advanced"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            Advanced (3-5 years)
+                          </SelectItem>
+                          <SelectItem 
+                            value="expert"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            Expert (5+ years)
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
 
                   {/* Skills */}
                   <div className="space-y-2">
-                    <Label htmlFor="skills">Technical Skills *</Label>
+                    <Label htmlFor="skills" className="text-gray-300 font-medium">Technical Skills *</Label>
                     <Textarea
                       id="skills"
                       placeholder="List your programming languages, frameworks, tools, and technologies..."
                       value={formData.skills}
                       onChange={(e) => handleInputChange("skills", e.target.value)}
                       required
-                      className="border-border/50 focus:border-primary min-h-[100px] transition-all duration-200 hover:border-primary/50"
+                      className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 min-h-[100px] transition-all duration-200 hover:border-gray-500/50"
                     />
                   </div>
 
                   {/* Motivation */}
-                  <div className="space-y-2">
-                    <Label htmlFor="motivation">Why do you want to join Y-SoC? *</Label>
-                    <Textarea
-                      id="motivation"
-                      placeholder="Tell us about your motivation, goals, and what you hope to achieve..."
-                      value={formData.motivation}
-                      onChange={(e) => handleInputChange("motivation", e.target.value)}
-                      required
-                      className="border-border/50 focus:border-primary min-h-[120px] transition-all duration-200 hover:border-primary/50"
-                    />
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-blue-400" />
+                      Tell Us About Yourself
+                    </h3>
+                    <div className="space-y-2">
+                      <Label htmlFor="motivation" className="text-gray-300 font-medium">Why do you want to join Y-SoC? *</Label>
+                      <Textarea
+                        id="motivation"
+                        placeholder="Tell us about your motivation, goals, and what you hope to achieve..."
+                        value={formData.motivation}
+                        onChange={(e) => handleInputChange("motivation", e.target.value)}
+                        required
+                        className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 min-h-[120px] transition-all duration-200 hover:border-gray-500/50"
+                      />
+                    </div>
                   </div>
 
                   {/* Links */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="github">GitHub Profile</Label>
-                      <Input
-                        id="github"
-                        placeholder="https://github.com/username"
-                        value={formData.github}
-                        onChange={(e) => handleInputChange("github", e.target.value)}
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="portfolio">Portfolio/Website</Label>
-                      <Input
-                        id="portfolio"
-                        placeholder="https://yourportfolio.com"
-                        value={formData.portfolio}
-                        onChange={(e) => handleInputChange("portfolio", e.target.value)}
-                        className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50"
-                      />
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <LinkIcon className="w-5 h-5 text-blue-400" />
+                      Portfolio & Links
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="github" className="text-gray-300 font-medium">GitHub Profile</Label>
+                        <Input
+                          id="github"
+                          placeholder="https://github.com/username"
+                          value={formData.github}
+                          onChange={(e) => handleInputChange("github", e.target.value)}
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="portfolio" className="text-gray-300 font-medium">Portfolio/Website</Label>
+                        <Input
+                          id="portfolio"
+                          placeholder="https://yourportfolio.com"
+                          value={formData.portfolio}
+                          onChange={(e) => handleInputChange("portfolio", e.target.value)}
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Availability */}
-                  <div className="space-y-2">
-                    <Label htmlFor="availability">Time Commitment *</Label>
-                    <Select
-                      value={formData.availability}
-                      onValueChange={(value) => handleInputChange("availability", value)}
-                    >
-                      <SelectTrigger className="border-border/50 focus:border-primary transition-all duration-200 hover:border-primary/50 group">
-                        <SelectValue placeholder="How many hours per week can you commit?" />
-                      </SelectTrigger>
-                      <SelectContent className="z-50">
-                        <SelectItem 
-                          value="5-10"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          5-10 hours per week
-                        </SelectItem>
-                        <SelectItem 
-                          value="10-15"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          10-15 hours per week
-                        </SelectItem>
-                        <SelectItem 
-                          value="15-20"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          15-20 hours per week
-                        </SelectItem>
-                        <SelectItem 
-                          value="20+"
-                          className="transition-colors duration-150 hover:bg-primary/10"
-                        >
-                          20+ hours per week
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-blue-400" />
+                      Availability
+                    </h3>
+                    <div className="space-y-2">
+                      <Label htmlFor="availability" className="text-gray-300 font-medium">Time Commitment *</Label>
+                      <Select
+                        value={formData.availability}
+                        onValueChange={(value) => handleInputChange("availability", value)}
+                      >
+                        <SelectTrigger className="bg-gray-900/50 border-gray-600/50 text-white focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50">
+                          <SelectValue placeholder="How many hours per week can you commit?" />
+                        </SelectTrigger>
+                        <SelectContent className="z-50 bg-gray-900 border-gray-700">
+                          <SelectItem 
+                            value="5-10"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            5-10 hours per week
+                          </SelectItem>
+                          <SelectItem 
+                            value="10-15"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            10-15 hours per week
+                          </SelectItem>
+                          <SelectItem 
+                            value="15-20"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            15-20 hours per week
+                          </SelectItem>
+                          <SelectItem 
+                            value="20+"
+                            className="text-white hover:bg-blue-500/20 transition-colors duration-150"
+                          >
+                            20+ hours per week
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
 
                   {/* Checkboxes */}
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="agreeTerms"
-                        checked={formData.agreeTerms}
-                        onCheckedChange={(checked) => handleInputChange("agreeTerms", checked as boolean)}
-                        required
-                        className="transition-all duration-200 hover:scale-110"
-                      />
-                      <Label htmlFor="agreeTerms" className="text-sm">
-                        I agree to the{" "}
-                        <a href="#" className="text-primary hover:underline">
-                          Terms of Service
-                        </a>{" "}
-                        and{" "}
-                        <a href="#" className="text-primary hover:underline">
-                          Code of Conduct
-                        </a>{" "}
-                        *
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="agreeNewsletter"
-                        checked={formData.agreeNewsletter}
-                        onCheckedChange={(checked) => handleInputChange("agreeNewsletter", checked as boolean)}
-                        className="transition-all duration-200 hover:scale-110"
-                      />
-                      <Label htmlFor="agreeNewsletter" className="text-sm">
-                        I'd like to receive updates about Y-SoC and the open-source community
-                      </Label>
+                  <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-blue-400" />
+                      Agreement & Preferences
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <Checkbox
+                          id="agreeTerms"
+                          checked={formData.agreeTerms}
+                          onCheckedChange={(checked) => handleInputChange("agreeTerms", checked as boolean)}
+                          required
+                          className="mt-1 transition-all duration-200 hover:scale-110"
+                        />
+                        <Label htmlFor="agreeTerms" className="text-sm text-gray-300 leading-relaxed">
+                          I agree to the{" "}
+                          <a href="/terms-of-service" className="text-blue-400 hover:underline">
+                            Terms of Service
+                          </a>{" "}
+                          and{" "}
+                          <a href="/code-of-conduct" className="text-blue-400 hover:underline">
+                            Code of Conduct
+                          </a>{" "}
+                          *
+                        </Label>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <Checkbox
+                          id="agreeNewsletter"
+                          checked={formData.agreeNewsletter}
+                          onCheckedChange={(checked) => handleInputChange("agreeNewsletter", checked as boolean)}
+                          className="mt-1 transition-all duration-200 hover:scale-110"
+                        />
+                        <Label htmlFor="agreeNewsletter" className="text-sm text-gray-300 leading-relaxed">
+                          I'd like to receive updates about Y-SoC and the open-source community
+                        </Label>
+                      </div>
                     </div>
                   </div>
 
@@ -520,20 +563,23 @@ export default function RecruitPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting || !formData.role || !formData.agreeTerms}
-                      className="w-full gradient-primary text-white hover:opacity-90 transition-opacity neon-glow"
+                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25 font-semibold py-3"
                     >
                       {isSubmitting ? (
-                        "Submitting Application..."
+                        <div className="flex items-center justify-center gap-2">
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Submitting Application...
+                        </div>
                       ) : (
-                        <>
-                          Submit Application <Send className="ml-2 h-5 w-5" />
-                        </>
+                        <div className="flex items-center justify-center gap-2">
+                          Submit Application <Send className="h-5 w-5" />
+                        </div>
                       )}
                     </Button>
                   </div>
                 </form>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

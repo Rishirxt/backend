@@ -19,8 +19,8 @@ export default function AboutPage() {
       description:
         "Visionary leaders who guide open-source projects from conception to completion. They coordinate teams, make technical decisions, and ensure project success.",
       skills: ["Project Management", "Technical Leadership", "Team Coordination", "Strategic Planning"],
-      color: "bg-primary",
-      textColor: "text-primary",
+      color: "bg-blue-500",
+      textColor: "text-blue-500",
     },
     {
       icon: Users,
@@ -28,8 +28,8 @@ export default function AboutPage() {
       description:
         "Experienced developers who share knowledge and guide newcomers. They provide technical guidance, code reviews, and career advice.",
       skills: ["Code Review", "Technical Guidance", "Career Mentoring", "Knowledge Sharing"],
-      color: "bg-secondary",
-      textColor: "text-secondary",
+      color: "bg-teal-500",
+      textColor: "text-teal-500",
     },
     {
       icon: Code,
@@ -37,8 +37,8 @@ export default function AboutPage() {
       description:
         "The backbone of our community who write code, fix bugs, and build amazing features. They turn ideas into reality through their coding skills.",
       skills: ["Software Development", "Bug Fixing", "Feature Implementation", "Testing"],
-      color: "bg-accent",
-      textColor: "text-accent",
+      color: "bg-green-500",
+      textColor: "text-green-500",
     },
     {
       icon: Palette,
@@ -46,8 +46,8 @@ export default function AboutPage() {
       description:
         "Creative minds who craft beautiful and intuitive user interfaces. They ensure our projects are not just functional but also visually appealing.",
       skills: ["UI/UX Design", "Visual Design", "Prototyping", "User Research"],
-      color: "bg-chart-4",
-      textColor: "text-chart-4",
+      color: "bg-purple-500",
+      textColor: "text-purple-500",
     },
     {
       icon: GraduationCap,
@@ -55,8 +55,8 @@ export default function AboutPage() {
       description:
         "Enthusiastic beginners starting their open-source journey. They learn by doing, contributing, and growing with the community.",
       skills: ["Learning", "Contributing", "Collaboration", "Growth Mindset"],
-      color: "bg-chart-5",
-      textColor: "text-chart-5",
+      color: "bg-orange-500",
+      textColor: "text-orange-500",
     },
   ]
 
