@@ -162,8 +162,10 @@ export default function TimelinePage() {
 
             {/* Single Moving Dot */}
             <motion.div 
-              className="absolute left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-[#0A0F1C] transform -translate-x-1/2 z-20"
+              className="absolute w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-[#0A0F1C] z-20"
               style={{
+                left: '50%',
+                transform: 'translateX(-50%)',
                 y: dotY,
                 scale: dotPulse,
                 boxShadow: useTransform(dotGlow, [0, 1], [
