@@ -103,7 +103,7 @@ export default function CodeOfConductPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black scroll-smooth">
       <Navigation />
       
       {/* Hero Section */}
@@ -120,6 +120,7 @@ export default function CodeOfConductPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute inset-0 bg-white/10 dark:bg-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
@@ -128,14 +129,14 @@ export default function CodeOfConductPage() {
             transition={getTransition(0.6)}
             className="mb-6"
           >
-            <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               <Shield className="w-4 h-4 mr-2" />
               Community Guidelines
             </Badge>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold gradient-text mb-8"
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-8"
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
             transition={getTransition(0.8)}
@@ -155,7 +156,7 @@ export default function CodeOfConductPage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -163,26 +164,26 @@ export default function CodeOfConductPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Our Commitment</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Our Commitment</h2>
+                <p className="text-lg text-gray-300 leading-relaxed">
                   The Youth Season of Code (Y-SoC) is dedicated to providing a harassment-free experience for everyone, 
                   regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, 
                   nationality, personal appearance, race, religion, or sexual identity and orientation.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg text-gray-300 leading-relaxed">
                   We do not tolerate harassment of participants in any form. This code of conduct applies to all Y-SoC 
                   spaces, including online forums, chat rooms, email lists, social media, and in-person events.
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Core Principles */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -191,8 +192,8 @@ export default function CodeOfConductPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Core Principles</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Our Core Principles</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               These principles guide our community interactions and help create a positive environment for everyone.
             </p>
           </motion.div>
@@ -206,15 +207,15 @@ export default function CodeOfConductPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <principle.icon className="w-6 h-6 text-primary" />
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                      <principle.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold">{principle.title}</h3>
-                    <p className="text-muted-foreground">{principle.description}</p>
-                  </CardContent>
-                </Card>
+                    <h3 className="text-xl font-bold mb-3 text-white">{principle.title}</h3>
+                    <p className="text-gray-300">{principle.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -222,7 +223,7 @@ export default function CodeOfConductPage() {
       </section>
 
       {/* Expected Behavior */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -231,8 +232,8 @@ export default function CodeOfConductPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Expected Behavior</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Expected Behavior</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We expect all participants to follow these guidelines in all Y-SoC interactions.
             </p>
           </motion.div>
@@ -246,17 +247,17 @@ export default function CodeOfConductPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full p-6">
-                  <CardContent className="space-y-4">
+                <div className="h-full rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-6">
                     <div className="flex items-start space-x-3">
                       <expectation.icon className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">{expectation.title}</h3>
-                        <p className="text-muted-foreground">{expectation.description}</p>
+                        <h3 className="text-lg font-bold mb-2 text-white">{expectation.title}</h3>
+                        <p className="text-gray-300">{expectation.description}</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -264,7 +265,7 @@ export default function CodeOfConductPage() {
       </section>
 
       {/* Prohibited Behavior */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -273,8 +274,8 @@ export default function CodeOfConductPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Prohibited Behavior</h2>
-            <p className="text-xl text-muted-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Prohibited Behavior</h2>
+            <p className="text-xl text-gray-300">
               The following behaviors are considered harassment and are unacceptable in our community.
             </p>
           </motion.div>
@@ -285,24 +286,24 @@ export default function CodeOfConductPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8">
-              <CardContent>
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8">
                 <div className="space-y-4">
                   {prohibitedBehaviors.map((behavior, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <AlertTriangle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
-                      <p className="text-muted-foreground">{behavior}</p>
+                      <p className="text-gray-300">{behavior}</p>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Reporting Process */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,8 +312,8 @@ export default function CodeOfConductPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Reporting Process</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Reporting Process</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               If you experience or witness harassment, we encourage you to report it. All reports will be handled confidentially.
             </p>
           </motion.div>
@@ -326,15 +327,15 @@ export default function CodeOfConductPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full p-6 text-center">
-                  <CardContent className="space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-6">
+                    <div className="w-12 h-12 mx-auto bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg shadow-blue-500/30">
                       {step.step}
                     </div>
-                    <h3 className="text-lg font-semibold">{step.title}</h3>
-                    <p className="text-muted-foreground text-sm">{step.description}</p>
-                  </CardContent>
-                </Card>
+                    <h3 className="text-lg font-bold mb-3 text-white">{step.title}</h3>
+                    <p className="text-gray-300 text-sm">{step.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -346,29 +347,29 @@ export default function CodeOfConductPage() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Card className="p-8 max-w-2xl mx-auto">
-              <CardContent className="space-y-4">
-                <h3 className="text-xl font-semibold">Contact Information</h3>
-                <p className="text-muted-foreground">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl p-8 max-w-2xl mx-auto">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-white">Contact Information</h3>
+                <p className="text-gray-300">
                   To report violations or ask questions about this code of conduct, please contact our team:
                 </p>
                 <div className="space-y-2">
-                  <p><strong>Email:</strong> team@ysoc.in</p>
+                  <p className="text-blue-400"><strong>Email:</strong> team@ysoc.in</p>
                 </div>
-                <Button asChild className="mt-4">
+                <Button asChild className="mt-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300">
                   <Link href="/contact">
                     Contact Us
                     <ExternalLink className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Enforcement */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -376,10 +377,10 @@ export default function CodeOfConductPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Enforcement</h2>
-                <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Enforcement</h2>
+                <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                   <p>
                     Participants asked to stop any harassing behavior are expected to comply immediately. 
                     If a participant engages in harassing behavior, the Y-SoC team may take any action they 
@@ -395,8 +396,8 @@ export default function CodeOfConductPage() {
                     good-faith reports of harassment seriously.
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

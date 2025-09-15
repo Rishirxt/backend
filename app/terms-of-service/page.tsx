@@ -112,7 +112,7 @@ export default function TermsOfServicePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black scroll-smooth">
       <Navigation />
       
       {/* Hero Section */}
@@ -129,6 +129,7 @@ export default function TermsOfServicePage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute inset-0 bg-white/10 dark:bg-transparent" />
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
@@ -137,14 +138,14 @@ export default function TermsOfServicePage() {
             transition={getTransition(0.6)}
             className="mb-6"
           >
-            <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
+            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               <FileText className="w-4 h-4 mr-2" />
               Legal Terms
             </Badge>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold gradient-text mb-8"
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-8"
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
             transition={getTransition(0.8)}
