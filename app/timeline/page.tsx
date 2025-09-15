@@ -63,11 +63,11 @@ export default function TimelinePage() {
 
 
   return (
-    <div className="min-h-screen bg-[#0a0a12]">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#0a0a12]">
         {/* Particles Background */}
         <div className="absolute inset-0">
           <Particles
@@ -103,7 +103,7 @@ export default function TimelinePage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a12]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#1a1a2e]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -155,7 +155,7 @@ export default function TimelinePage() {
                     }`}
                   >
                     <div 
-                      className="bg-[#1a1a2e] rounded-2xl p-6 border border-gray-600/40 hover:border-gray-500/60 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="bg-[#16213e] rounded-2xl p-6 border border-gray-500/50 hover:border-gray-400/70 transition-all duration-300 shadow-lg hover:shadow-xl"
                       style={{
                         borderLeftColor: event.accentColor,
                         borderLeftWidth: '4px'
