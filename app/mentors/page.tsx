@@ -87,8 +87,8 @@ export default function MentorsPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch">
-            {mentors.map((mentor, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {mentors.slice(0, 3).map((mentor, index) => (
               <motion.div
                 key={mentor.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -98,82 +98,78 @@ export default function MentorsPage() {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="group"
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 bg-background/80 backdrop-blur-sm flex flex-col hover:scale-105 hover:shadow-primary/20">
-                  <CardContent className="p-8 flex flex-col h-full">
-                    {/* Mentor Header */}
-                    <div className="flex items-start gap-5 mb-8">
-                      <div className="relative flex-shrink-0">
-                        <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-primary/20 group-hover:border-primary/40 transition-colors duration-300 shadow-lg">
-                          <img
-                            src={mentor.avatar}
-                            alt={mentor.name}
-                            className="w-full h-full object-cover object-center"
-                            style={{ aspectRatio: '1/1' }}
-                          />
-                        </div>
-                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-3 border-background shadow-sm"></div>
+                <div className="bg-[#12182B] rounded-2xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 shadow-lg hover:shadow-xl h-full flex flex-col">
+                  {/* Profile Picture with Online Status */}
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="relative flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-600 group-hover:border-blue-500/50 transition-colors duration-300">
+                        <img
+                          src={mentor.avatar}
+                          alt={mentor.name}
+                          className="w-full h-full object-cover object-center"
+                        />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                            {mentor.name}
-                          </h3>
-                          <Badge variant="outline" className="text-xs px-3 py-1 bg-green-500/10 border-green-500/30 text-green-600 flex-shrink-0">
-                            {mentor.availability}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-2 font-medium">{mentor.role}</p>
-                        <p className="text-sm text-primary font-semibold">{mentor.company}</p>
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#12182B] shadow-sm"></div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                          {mentor.name}
+                        </h3>
+                        <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-semibold rounded-full border border-green-500/30">
+                          {mentor.availability}
+                        </span>
                       </div>
+                      <p className="text-sm text-gray-300 mb-1 font-medium">{mentor.role}</p>
+                      <p className="text-sm text-blue-400 font-semibold">{mentor.company}</p>
                     </div>
+                  </div>
 
-                    {/* Bio */}
-                    <p className="text-sm text-muted-foreground mb-6 leading-relaxed flex-grow">
-                      {mentor.bio}
-                    </p>
+                  {/* Bio */}
+                  <p className="text-sm text-gray-300 mb-6 leading-relaxed flex-grow">
+                    {mentor.bio}
+                  </p>
 
-                    {/* Expertise Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {mentor.expertise.slice(0, 3).map((skill) => (
-                        <Badge key={skill} variant="secondary" className="text-xs px-3 py-1 bg-primary/10 text-primary border-primary/20">
-                          {skill}
-                        </Badge>
-                      ))}
-                      {mentor.expertise.length > 3 && (
-                        <Badge variant="outline" className="text-xs px-3 py-1 border-primary/30 text-primary">
-                          +{mentor.expertise.length - 3} more
-                        </Badge>
-                      )}
-                    </div>
-
-                    {/* Stats */}
-                    <div className="flex items-center justify-center text-sm text-muted-foreground mb-6 p-3 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-green-500" />
-                        <span className="font-medium">{mentor.experience}</span>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons - Pushed to bottom */}
-                    <div className="flex gap-2 mt-auto">
-                      <Button 
-                        size="sm" 
-                        className="flex-1 gradient-primary text-white hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
-                        asChild
+                  {/* Skills/Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {mentor.expertise.slice(0, 3).map((skill) => (
+                      <span 
+                        key={skill} 
+                        className="px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-600 hover:border-blue-500/50 transition-colors duration-300"
                       >
-                        <a 
-                          href={mentor.linkedin} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center font-medium"
-                        >
-                          <MessageCircle className="w-4 h-4 mr-2" />
-                          Connect
-                        </a>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                        {skill}
+                      </span>
+                    ))}
+                    {mentor.expertise.length > 3 && (
+                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-600">
+                        +{mentor.expertise.length - 3} more
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Experience */}
+                  <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
+                    <Clock className="w-4 h-4 text-blue-400" />
+                    <span className="font-medium">{mentor.experience}</span>
+                  </div>
+
+                  {/* Connect Button */}
+                  <Button 
+                    size="sm" 
+                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25"
+                    asChild
+                  >
+                    <a 
+                      href={mentor.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center font-medium"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Connect
+                    </a>
+                  </Button>
+                </div>
               </motion.div>
             ))}
           </div>

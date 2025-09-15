@@ -7,34 +7,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Particles from "@/components/Particles"
 import Link from "next/link"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { motion } from "framer-motion"
 import { animations, getTransition } from "@/lib/animations"
 import { Calendar, Users, Lightbulb, Code, Trophy, Star, ArrowRight, CheckCircle, Clock } from "lucide-react"
 
 export default function TimelinePage() {
-  const { scrollYProgress } = useScroll()
-  
-  // Create animated values for the single moving dot with responsive scroll
-  const dotYRaw = useTransform(scrollYProgress, [0, 0.95], [0, 1200])
-  const dotPulseRaw = useTransform(scrollYProgress, [0, 1], [1, 1.15])
-  const dotGlowRaw = useTransform(scrollYProgress, [0, 1], [0, 1])
-  
-  // Apply spring animations for responsive movement
-  const dotY = useSpring(dotYRaw, {
-    stiffness: 300,
-    damping: 15,
-    restDelta: 0.01
-  })
-  const dotPulse = useSpring(dotPulseRaw, {
-    stiffness: 400,
-    damping: 10,
-    restDelta: 0.01
-  })
-  const dotGlow = useSpring(dotGlowRaw, {
-    stiffness: 350,
-    damping: 12,
-    restDelta: 0.01
-  })
 
   const timelineEvents = [
     {
@@ -160,20 +137,6 @@ export default function TimelinePage() {
               />
             ))}
 
-            {/* Single Moving Dot */}
-            <motion.div 
-              className="absolute w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-[#0A0F1C] z-20"
-              style={{
-                left: '50%',
-                transform: 'translateX(-50%)',
-                y: dotY,
-                scale: dotPulse,
-                boxShadow: useTransform(dotGlow, [0, 1], [
-                  "0 0 0px rgba(0, 150, 255, 0)",
-                  "0 0 20px rgba(0, 150, 255, 0.8), 0 0 40px rgba(0, 224, 255, 0.6)"
-                ])
-              }}
-            />
 
             <div className="space-y-16">
               {timelineEvents.map((event, index) => (
