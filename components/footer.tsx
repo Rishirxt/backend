@@ -59,7 +59,81 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <Link href="/" className="flex items-center space-x-3 mb-6">
+                  <motion.div
+                    className="w-12 h-12 rounded-lg overflow-hidden"
+                    whileHover={{ 
+                      scale: 1.1,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.3 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                      boxShadow: [
+                        "0 0 0 0 rgba(59, 130, 246, 0.4)",
+                        "0 0 0 4px rgba(59, 130, 246, 0.1)",
+                        "0 0 0 0 rgba(59, 130, 246, 0.4)"
+                      ]
+                    }}
+                    transition={{
+                      boxShadow: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    <Image
+                      src="/logo.png"
+                      alt="Y-SoC Logo"
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                  <span className="font-bold text-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Y-SoC</span>
+                </Link>
+                <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
+                  Empowering the next generation of developers through open-source collaboration. Join thousands of
+                  young developers building the future together.
+                </p>
+                <Badge variant="secondary" className="mb-6">
+                  October 2025 - March 2026
+                </Badge>
+                <div className="flex space-x-4">
+                  {socialLinks.map((social) => (
+                    <Button
+                      key={social.label}
+                      variant="ghost"
+                      size="icon"
+                      asChild
+                      className="hover:text-white transition-colors text-gray-400"
+                    >
+                      <Link 
+                        href={social.href} 
+                        aria-label={social.label}
+                        target={social.href.startsWith('http') ? '_blank' : '_self'}
+                        rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      >
+                        <social.icon className="h-5 w-5" />
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Links Sections */}
+            <div className="lg:col-span-3 grid md:grid-cols-4 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -147,6 +221,7 @@ export function Footer() {
                   ))}
                 </ul>
               </motion.div>
+            </div>
           </div>
         </div>
 
