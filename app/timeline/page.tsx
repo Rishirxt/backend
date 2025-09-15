@@ -43,8 +43,8 @@ export default function TimelinePage() {
       icon: Calendar,
       description: "Applications open for Project Leads, Mentors, and Participants. Teams are formed and projects are introduced.",
       highlights: [],
-      color: "bg-primary",
-      status: "active",
+      accentColor: "#0096FF",
+      status: "current",
     },
     {
       month: "Phase 2",
@@ -52,7 +52,7 @@ export default function TimelinePage() {
       icon: Users,
       description: "Contributors connect with mentors, explore beginner-friendly issues, and learn through workshops.",
       highlights: [],
-      color: "bg-secondary",
+      accentColor: "#00E0FF",
       status: "upcoming",
     },
     {
@@ -61,7 +61,7 @@ export default function TimelinePage() {
       icon: Code,
       description: "Core development begins with pull requests, code reviews, and teamwork.",
       highlights: [],
-      color: "bg-accent",
+      accentColor: "#00FFA3",
       status: "upcoming",
     },
     {
@@ -70,7 +70,7 @@ export default function TimelinePage() {
       icon: Lightbulb,
       description: "Features are polished, bugs are fixed, and documentation is improved.",
       highlights: [],
-      color: "bg-chart-4",
+      accentColor: "#CFFF04",
       status: "upcoming",
     },
     {
@@ -79,14 +79,14 @@ export default function TimelinePage() {
       icon: Trophy,
       description: "Completed projects are presented to the community, with recognition for outstanding contributors.",
       highlights: [],
-      color: "bg-chart-5",
+      accentColor: "#9D4DFF",
       status: "upcoming",
     }
   ]
 
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A0F1C] to-[#0D1224]">
       <Navigation />
 
       {/* Hero Section */}
@@ -97,14 +97,14 @@ export default function TimelinePage() {
             particleCount={40}
             particleSize={3}
             particleSpeed={0.8}
-            particleColor="#f59e0b"
+            particleColor="#0096FF"
             backgroundColor="transparent"
             opacity={0.6}
             connectionDistance={120}
-            connectionColor="#f59e0b"
+            connectionColor="#0096FF"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-500/5" />
         <div className="max-w-7xl mx-auto relative">
           <motion.div
             className="text-center mb-16"
@@ -115,7 +115,7 @@ export default function TimelinePage() {
             <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Program Flow
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Your 6-Month Journey</h1>
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Your 6-Month Journey</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               From registration to showcase, follow the complete Y-SoC timeline and see how you'll grow as a developer
               and contributor to the open-source community.
@@ -135,7 +135,7 @@ export default function TimelinePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Program Flow</h2>
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Program Flow</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Each phase is carefully designed to maximize learning, collaboration, and project success
             </p>
@@ -143,22 +143,22 @@ export default function TimelinePage() {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-cyan-400 to-blue-500 transform md:-translate-x-0.5 shadow-lg shadow-blue-500/50" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-600 via-gray-500 to-gray-600 transform md:-translate-x-0.5 shadow-lg shadow-gray-500/20" />
 
             {/* Single Moving Dot */}
             <motion.div 
-              className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-gray-900 transform -translate-x-3 md:-translate-x-3 z-20 shadow-lg shadow-blue-500/50"
+              className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-[#0A0F1C] transform -translate-x-3 md:-translate-x-3 z-20"
               style={{
                 y: dotY,
                 scale: dotPulse,
                 boxShadow: useTransform(dotGlow, [0, 1], [
-                  "0 0 0px rgba(59, 130, 246, 0)",
-                  "0 0 30px rgba(59, 130, 246, 1)"
+                  "0 0 0px rgba(0, 150, 255, 0)",
+                  "0 0 20px rgba(0, 150, 255, 0.8), 0 0 40px rgba(0, 224, 255, 0.6)"
                 ])
               }}
             />
 
-            <div className="space-y-12">
+            <div className="space-y-16">
               {timelineEvents.map((event, index) => (
                 <motion.div
                   key={event.month}
@@ -169,7 +169,13 @@ export default function TimelinePage() {
                   className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
                   {/* Static Timeline Node */}
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-background border-4 border-primary/30 transform -translate-x-2 md:-translate-x-2 z-10" />
+                  <div 
+                    className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full transform -translate-x-2 md:-translate-x-2 z-10 ${
+                      event.status === "current" 
+                        ? "bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/50" 
+                        : "bg-gray-600 shadow-lg shadow-gray-500/30"
+                    }`}
+                  />
 
                   {/* Content Card */}
                   <div
@@ -177,26 +183,42 @@ export default function TimelinePage() {
                       index % 2 === 0 ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
                     }`}
                   >
-                    <Card className="hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div
-                            className={`w-12 h-12 rounded-lg ${event.color} flex items-center justify-center neon-glow`}
-                          >
-                            <event.icon className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <Badge variant={event.status === "active" ? "default" : "secondary"} className="mb-2">
-                              {event.status === "active" ? "Current Phase" : "Upcoming"}
-                            </Badge>
-                            <h3 className="text-sm font-medium text-muted-foreground">{event.month}</h3>
-                          </div>
+                    <div 
+                      className="bg-[#12182B] rounded-2xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      style={{
+                        borderLeftColor: event.accentColor,
+                        borderLeftWidth: '4px'
+                      }}
+                    >
+                      <div className="flex items-start gap-4 mb-4">
+                        <div
+                          className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                          style={{
+                            backgroundColor: event.accentColor,
+                            boxShadow: `0 0 20px ${event.accentColor}40`
+                          }}
+                        >
+                          <event.icon className="w-6 h-6 text-white" />
                         </div>
-
-                        <h4 className="text-xl font-bold text-foreground mb-3">{event.title}</h4>
-                        <p className="text-muted-foreground leading-relaxed">{event.description}</p>
-                      </CardContent>
-                    </Card>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-sm font-medium text-gray-400">{event.month}</span>
+                            <span 
+                              className="px-3 py-1 rounded-full text-xs font-semibold"
+                              style={{
+                                backgroundColor: `${event.accentColor}20`,
+                                color: event.accentColor,
+                                border: `1px solid ${event.accentColor}40`
+                              }}
+                            >
+                              {event.status === "current" ? "Current" : "Upcoming"}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-bold text-white mb-3">{event.title}</h3>
+                          <p className="text-[#A9B2C7] leading-relaxed">{event.description}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -206,7 +228,7 @@ export default function TimelinePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-500/10 via-cyan-500/5 to-blue-500/10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -214,7 +236,7 @@ export default function TimelinePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Ready to Start Your Journey?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Ready to Start Your Journey?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Don't miss out on this incredible opportunity to grow, learn, and contribute to meaningful projects. Your
               open-source journey starts with a single application.
@@ -223,7 +245,7 @@ export default function TimelinePage() {
               <Button
                 asChild
                 size="lg"
-                className="gradient-primary text-white hover:opacity-90 transition-opacity neon-glow"
+                className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/25"
               >
                 <Link href="/recruit" className="flex items-center">
                   Apply Now <ArrowRight className="ml-2 h-5 w-5" />
@@ -233,7 +255,7 @@ export default function TimelinePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
               >
                 <Link href="/about">Learn More About Y-SoC</Link>
               </Button>
