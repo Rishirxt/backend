@@ -55,98 +55,24 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-muted/30 border-t border-border/50">
+    <footer className="bg-black border-t border-gray-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid lg:grid-cols-5 gap-8">
-            {/* Brand Section */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <Link href="/" className="flex items-center space-x-3 mb-6">
-                  <motion.div
-                    className="w-12 h-12 rounded-lg overflow-hidden"
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: [0, -5, 5, 0],
-                      transition: { duration: 0.3 }
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{
-                      boxShadow: [
-                        "0 0 0 0 rgba(59, 130, 246, 0.4)",
-                        "0 0 0 4px rgba(59, 130, 246, 0.1)",
-                        "0 0 0 0 rgba(59, 130, 246, 0.4)"
-                      ]
-                    }}
-                    transition={{
-                      boxShadow: {
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
-                    <Image
-                      src="/logo.png"
-                      alt="Y-SoC Logo"
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <span className="font-bold text-2xl gradient-text">Y-SoC</span>
-                </Link>
-                <p className="text-muted-foreground mb-6 leading-relaxed max-w-md">
-                  Empowering the next generation of developers through open-source collaboration. Join thousands of
-                  young developers building the future together.
-                </p>
-                <Badge variant="secondary" className="mb-6">
-                  October 2025 - March 2026
-                </Badge>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <Button
-                      key={social.label}
-                      variant="ghost"
-                      size="icon"
-                      asChild
-                      className="hover:text-primary transition-colors"
-                    >
-                      <Link 
-                        href={social.href} 
-                        aria-label={social.label}
-                        target={social.href.startsWith('http') ? '_blank' : '_self'}
-                        rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      >
-                        <social.icon className="h-5 w-5" />
-                      </Link>
-                    </Button>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Links Sections */}
-            <div className="lg:col-span-3 grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-semibold text-foreground mb-4">Program</h3>
+                <h3 className="font-bold text-white mb-4">Program</h3>
                 <ul className="space-y-3">
                   {footerLinks.program.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                       >
                         {link.label}
                       </Link>
@@ -161,13 +87,13 @@ export function Footer() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-semibold text-foreground mb-4">Community</h3>
+                <h3 className="font-bold text-white mb-4">Community</h3>
                 <ul className="space-y-3">
                   {footerLinks.community.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                         target={link.href.startsWith('http') ? '_blank' : '_self'}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -184,13 +110,13 @@ export function Footer() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-semibold text-foreground mb-4">Community Partners</h3>
+                <h3 className="font-bold text-white mb-4">Community Partners</h3>
                 <ul className="space-y-3">
                   {footerLinks.communityPartners.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                         target={link.href.startsWith('http') ? '_blank' : '_self'}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -207,13 +133,13 @@ export function Footer() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-semibold text-foreground mb-4">Support</h3>
+                <h3 className="font-bold text-white mb-4">Support</h3>
                 <ul className="space-y-3">
                   {footerLinks.support.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                       >
                         {link.label}
                       </Link>
@@ -221,12 +147,11 @@ export function Footer() {
                   ))}
                 </ul>
               </motion.div>
-            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-border/50">
+        <div className="py-6 border-t border-gray-800/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
             <motion.div
@@ -236,12 +161,12 @@ export function Footer() {
               viewport={{ once: true }}
               className="flex items-center gap-6"
             >
-              <p className="text-sm text-muted-foreground">© 2025 Y-SoC. All rights reserved.</p>
+              <p className="text-sm text-gray-400">© 2025 Y-SoC. All rights reserved.</p>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={scrollToTop}
-                className="hover:text-primary transition-colors"
+                className="hover:text-white transition-colors text-gray-400"
                 aria-label="Scroll to top"
               >
                 <ArrowUp className="h-4 w-4" />
