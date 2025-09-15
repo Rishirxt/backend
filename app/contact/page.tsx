@@ -156,18 +156,18 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Card className="h-full text-center hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 rounded-xl gradient-primary flex items-center justify-center mx-auto mb-6 neon-glow">
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                  <div className="p-8">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
                       <info.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">{info.title}</h3>
-                    <p className="text-muted-foreground mb-4">{info.description}</p>
-                    <p className="text-primary font-medium mb-6">{info.contact}</p>
+                    <h3 className="text-xl font-bold text-white mb-2">{info.title}</h3>
+                    <p className="text-gray-300 mb-4">{info.description}</p>
+                    <p className="text-blue-400 font-medium mb-6">{info.contact}</p>
                     {info.action && (
                       <Button
                         variant="outline"
-                        className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                        className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white bg-transparent"
                         onClick={() => {
                           if (info.title === "Email Us") {
                             window.open("https://mail.google.com/mail/?view=cm&fs=1&to=team@ysoc.in", "_blank");
@@ -177,104 +177,129 @@ export default function ContactPage() {
                         {info.action}
                       </Button>
                     )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
 
           {/* Contact Form */}
-          <div className="max-w-2xl mx-auto mt-12">
+          <div className="max-w-4xl mx-auto mt-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <Card className="border-border/50">
-                <CardHeader>
-                  <CardTitle className="text-2xl bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Send us a Message</CardTitle>
-                </CardHeader>
-                <CardContent>
+              <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+                <div className="p-8">
+                  <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-4">Send us a Message</h2>
+                    <p className="text-gray-300">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
+                  </div>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input
-                          id="name"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
-                          required
-                          className="border-border/50 focus:border-primary"
-                        />
+                    {/* Personal Information */}
+                    <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <Users className="w-5 h-5 text-blue-400" />
+                        Contact Information
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="name" className="text-gray-300 font-medium">Full Name *</Label>
+                          <Input
+                            id="name"
+                            value={formData.name}
+                            onChange={(e) => handleInputChange("name", e.target.value)}
+                            required
+                            className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email" className="text-gray-300 font-medium">Email Address *</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => handleInputChange("email", e.target.value)}
+                            required
+                            className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                            placeholder="your.email@example.com"
+                          />
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
-                          required
-                          className="border-border/50 focus:border-primary"
-                        />
+                    </div>
+
+                    {/* Message Details */}
+                    <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
+                      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <Mail className="w-5 h-5 text-blue-400" />
+                        Message Details
+                      </h3>
+                      <div className="space-y-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="category" className="text-gray-300 font-medium">Category *</Label>
+                          <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
+                            <SelectTrigger className="bg-gray-900/50 border-gray-600/50 text-white focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50">
+                              <SelectValue placeholder="Select inquiry type" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-gray-900 border-gray-700">
+                              {contactCategories.map((category) => (
+                                <SelectItem key={category.value} value={category.value} className="text-white hover:bg-blue-500/20 transition-colors duration-150">
+                                  {category.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="subject" className="text-gray-300 font-medium">Subject *</Label>
+                          <Input
+                            id="subject"
+                            value={formData.subject}
+                            onChange={(e) => handleInputChange("subject", e.target.value)}
+                            required
+                            className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                            placeholder="What's this about?"
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="message" className="text-gray-300 font-medium">Message *</Label>
+                          <Textarea
+                            id="message"
+                            placeholder="Tell us more about your inquiry..."
+                            value={formData.message}
+                            onChange={(e) => handleInputChange("message", e.target.value)}
+                            required
+                            className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 min-h-[150px] transition-all duration-200 hover:border-gray-500/50"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="category">Category *</Label>
-                      <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
-                        <SelectTrigger className="border-border/50 focus:border-primary">
-                          <SelectValue placeholder="Select inquiry type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {contactCategories.map((category) => (
-                            <SelectItem key={category.value} value={category.value}>
-                              {category.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                    <div className="pt-6">
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25 font-semibold py-3"
+                      >
+                        {isSubmitting ? (
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            Sending Message...
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-center gap-2">
+                            Send Message <Send className="h-5 w-5" />
+                          </div>
+                        )}
+                      </Button>
                     </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject *</Label>
-                      <Input
-                        id="subject"
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange("subject", e.target.value)}
-                        required
-                        className="border-border/50 focus:border-primary"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us more about your inquiry..."
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        required
-                        className="border-border/50 focus:border-primary min-h-[150px]"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full gradient-primary text-white hover:opacity-90 transition-opacity neon-glow"
-                    >
-                      {isSubmitting ? (
-                        "Sending Message..."
-                      ) : (
-                        <>
-                          Send Message <Send className="ml-2 h-5 w-5" />
-                        </>
-                      )}
-                    </Button>
                   </form>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

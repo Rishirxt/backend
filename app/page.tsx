@@ -411,39 +411,24 @@ export default function HomePage() {
                   whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
-                  <Card className="h-full hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/50 group-hover:bg-gradient-to-br group-hover:from-primary/5 group-hover:to-secondary/5">
-                    <CardContent className="p-6">
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                    <div className="p-6">
                       {/* Modern Icon */}
-                      <div className="mb-4">
-                        <role.icon className={`w-8 h-8 mx-auto ${role.iconColor} transition-colors duration-300`} />
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                        <role.icon className="w-8 h-8 text-white" />
                       </div>
                       
-                      {/* Colored Line Accent */}
-                      <motion.div 
-                        className={`w-full h-2 rounded-full ${role.color} mb-4 group-hover:h-3 transition-all duration-300`}
-                        whileHover={{
-                          scaleX: 1.1,
-                          transition: { duration: 0.3 }
-                        }}
-                      />
-                      
                       {/* Role Title */}
-                      <motion.h3 
-                        className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300"
-                        whileHover={{ scale: 1.02 }}
-                      >
+                      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">
                         {role.name}
-                      </motion.h3>
+                      </h3>
                       
                       {/* Role Description */}
-                      <motion.p 
-                        className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300"
-                        whileHover={{ scale: 1.01 }}
-                      >
+                      <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
                         {role.description}
-                      </motion.p>
-                    </CardContent>
-                  </Card>
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -460,39 +445,24 @@ export default function HomePage() {
                   whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
-                  <Card className="h-full hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/50 group-hover:bg-gradient-to-br group-hover:from-primary/5 group-hover:to-secondary/5">
-                    <CardContent className="p-6">
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                    <div className="p-6">
                       {/* Modern Icon */}
-                      <div className="mb-4">
-                        <role.icon className={`w-8 h-8 mx-auto ${role.iconColor} transition-colors duration-300`} />
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                        <role.icon className="w-8 h-8 text-white" />
                       </div>
                       
-                      {/* Colored Line Accent */}
-                      <motion.div 
-                        className={`w-full h-2 rounded-full ${role.color} mb-4 group-hover:h-3 transition-all duration-300`}
-                        whileHover={{
-                          scaleX: 1.1,
-                          transition: { duration: 0.3 }
-                        }}
-                      />
-                      
                       {/* Role Title */}
-                      <motion.h3 
-                        className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300"
-                        whileHover={{ scale: 1.02 }}
-                      >
+                      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">
                         {role.name}
-                      </motion.h3>
+                      </h3>
                       
                       {/* Role Description */}
-                      <motion.p 
-                        className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300"
-                        whileHover={{ scale: 1.01 }}
-                      >
+                      <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
                         {role.description}
-                      </motion.p>
-                    </CardContent>
-                  </Card>
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
