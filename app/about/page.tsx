@@ -226,7 +226,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-12">
             {memberCategories.map((category, index) => (
               <motion.div
                 key={category.title}
@@ -234,34 +234,37 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="bg-gray-900/30 rounded-2xl p-8 border border-gray-800/50 hover:border-blue-500/30 transition-all duration-300"
               >
-                <Card className="hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col lg:flex-row items-start gap-6">
-                      <div className="flex items-center gap-4 lg:min-w-0 lg:flex-1">
-                        <div
-                          className={`w-16 h-16 rounded-xl ${category.color} flex items-center justify-center neon-glow`}
-                        >
-                          <category.icon className="w-8 h-8 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className={`text-2xl font-bold mb-3 ${category.textColor}`}>{category.title}</h3>
-                          <p className="text-muted-foreground text-lg leading-relaxed">{category.description}</p>
-                        </div>
-                      </div>
-                      <div className="lg:min-w-0 lg:flex-1">
-                        <h4 className="font-semibold mb-3 text-foreground">Key Skills & Responsibilities:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {category.skills.map((skill) => (
-                            <Badge key={skill} variant="outline" className="text-sm">
-                              {skill}
-                            </Badge>
-                          ))}
-                        </div>
+                <div className="flex items-start gap-6">
+                  <div
+                    className={`w-16 h-16 rounded-xl ${category.color} flex items-center justify-center flex-shrink-0`}
+                  >
+                    <category.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                      {category.title}
+                    </h3>
+                    <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                      {category.description}
+                    </p>
+                    <div>
+                      <h4 className="font-semibold mb-3 text-white">Key Skills & Responsibilities:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <Badge 
+                            key={skill} 
+                            variant="outline" 
+                            className="text-sm bg-gray-800/50 border-gray-700 text-gray-300 hover:bg-gray-700/50"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
