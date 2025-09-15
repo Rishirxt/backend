@@ -63,7 +63,7 @@ export default function TimelinePage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A0F1C] to-[#0D1224]">
+    <div className="min-h-screen bg-[#0a0a12]">
       <Navigation />
 
       {/* Hero Section */}
@@ -76,12 +76,12 @@ export default function TimelinePage() {
             particleSpeed={0.8}
             particleColor="#0096FF"
             backgroundColor="transparent"
-            opacity={0.6}
+            opacity={0.4}
             connectionDistance={120}
             connectionColor="#0096FF"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-500/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-transparent to-cyan-500/3" />
         <div className="max-w-7xl mx-auto relative">
           <motion.div
             className="text-center mb-16"
@@ -93,7 +93,7 @@ export default function TimelinePage() {
               Program Flow
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Your 6-Month Journey</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
               From registration to showcase, follow the complete Y-SoC timeline and see how you'll grow as a developer
               and contributor to the open-source community.
             </p>
@@ -103,7 +103,7 @@ export default function TimelinePage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a12]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -113,7 +113,7 @@ export default function TimelinePage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Program Flow</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               Each phase is carefully designed to maximize learning, collaboration, and project success
             </p>
           </motion.div>
@@ -155,7 +155,7 @@ export default function TimelinePage() {
                     }`}
                   >
                     <div 
-                      className="bg-[#12182B] rounded-2xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="bg-[#1a1a2e] rounded-2xl p-6 border border-gray-600/40 hover:border-gray-500/60 transition-all duration-300 shadow-lg hover:shadow-xl"
                       style={{
                         borderLeftColor: event.accentColor,
                         borderLeftWidth: '4px'
@@ -173,7 +173,7 @@ export default function TimelinePage() {
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <span className="text-sm font-medium text-gray-400">{event.month}</span>
+                            <span className="text-sm font-medium text-gray-300">{event.month}</span>
                             <span 
                               className="px-3 py-1 rounded-full text-xs font-semibold"
                               style={{
@@ -186,7 +186,7 @@ export default function TimelinePage() {
                             </span>
                           </div>
                           <h3 className="text-xl font-bold text-white mb-3">{event.title}</h3>
-                          <p className="text-[#A9B2C7] leading-relaxed">{event.description}</p>
+                          <p className="text-gray-200 leading-relaxed">{event.description}</p>
                         </div>
                       </div>
                     </div>
@@ -199,7 +199,7 @@ export default function TimelinePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-500/10 via-cyan-500/5 to-blue-500/10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a12]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,7 +208,7 @@ export default function TimelinePage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">Ready to Start Your Journey?</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
               Don't miss out on this incredible opportunity to grow, learn, and contribute to meaningful projects. Your
               open-source journey starts with a single application.
             </p>
