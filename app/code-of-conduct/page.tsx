@@ -326,14 +326,15 @@ export default function CodeOfConductPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                   <div className="p-6">
-                    <div className="w-12 h-12 mx-auto bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg shadow-blue-500/30">
+                    <div className="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-lg shadow-blue-500/30 mb-4 group-hover:shadow-blue-500/50 transition-all duration-300">
                       {step.step}
                     </div>
-                    <h3 className="text-lg font-bold mb-3 text-white">{step.title}</h3>
-                    <p className="text-gray-300 text-sm">{step.description}</p>
+                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">{step.title}</h3>
+                    <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300">{step.description}</p>
                   </div>
                 </div>
               </motion.div>

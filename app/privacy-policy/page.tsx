@@ -165,7 +165,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -173,32 +173,32 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Our Commitment to Privacy</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Our Commitment to Privacy</h2>
+                <p className="text-lg text-gray-300 leading-relaxed">
                   Youth Season of Code (Y-SoC) is committed to protecting your privacy and personal information. 
                   This Privacy Policy explains how we collect, use, disclose, and safeguard your information when 
                   you participate in our program or use our website.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg text-gray-300 leading-relaxed">
                   By using our services, you agree to the collection and use of information in accordance with 
                   this policy. We will not use or share your information with anyone except as described in this 
                   Privacy Policy.
                 </p>
-                <div className="bg-muted/30 p-6 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
+                <div className="bg-gray-800/30 p-6 rounded-lg border border-gray-700/20">
+                  <p className="text-sm text-gray-300">
                     <strong>Last Updated:</strong> September 2025
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Privacy Principles */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -207,8 +207,8 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Privacy Principles</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Our Privacy Principles</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We follow these core principles to ensure your privacy and data protection.
             </p>
           </motion.div>
@@ -221,16 +221,17 @@ export default function PrivacyPolicyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <principle.icon className="w-6 h-6 text-primary" />
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+                      <principle.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold">{principle.title}</h3>
-                    <p className="text-muted-foreground">{principle.description}</p>
-                  </CardContent>
-                </Card>
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">{principle.title}</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">{principle.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -238,7 +239,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Information We Collect */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -247,8 +248,8 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Information We Collect</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Information We Collect</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We collect different types of information to provide and improve our services.
             </p>
           </motion.div>
@@ -261,23 +262,26 @@ export default function PrivacyPolicyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6">
-                  <CardContent className="space-y-4">
+                <div className="h-full rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
                     <div className="flex items-center space-x-3 mb-4">
-                      <Database className="w-6 h-6 text-primary" />
-                      <h3 className="text-xl font-semibold">{type.category}</h3>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+                        <Database className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{type.category}</h3>
                     </div>
                     <ul className="space-y-2">
                       {type.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mr-3 mt-2 flex-shrink-0" />
+                        <li key={idx} className="flex items-start text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-3 mt-2 flex-shrink-0" />
                           {item}
                         </li>
                       ))}
                     </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -285,7 +289,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* How We Use Information */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -294,8 +298,8 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">How We Use Your Information</h2>
-            <p className="text-xl text-muted-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">How We Use Your Information</h2>
+            <p className="text-xl text-gray-300">
               We use your information for specific, legitimate purposes related to our program.
             </p>
           </motion.div>
@@ -308,20 +312,21 @@ export default function PrivacyPolicyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="p-6">
-                  <CardContent>
+                <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Globe className="w-5 h-5 text-primary" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+                        <Globe className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">{usage.purpose}</h3>
-                        <p className="text-muted-foreground">{usage.description}</p>
+                        <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">{usage.purpose}</h3>
+                        <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">{usage.description}</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -329,7 +334,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Your Rights */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -338,8 +343,8 @@ export default function PrivacyPolicyPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Privacy Rights</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Your Privacy Rights</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               You have certain rights regarding your personal information under applicable privacy laws.
             </p>
           </motion.div>
@@ -352,16 +357,19 @@ export default function PrivacyPolicyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6">
-                  <CardContent className="space-y-4">
+                <div className="h-full rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
                     <div className="flex items-center space-x-3">
-                      <UserCheck className="w-6 h-6 text-green-500" />
-                      <h3 className="text-lg font-semibold">{right.right}</h3>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-300">
+                        <UserCheck className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300">{right.right}</h3>
                     </div>
-                    <p className="text-muted-foreground text-sm">{right.description}</p>
-                  </CardContent>
-                </Card>
+                    <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300 mt-2">{right.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -369,7 +377,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -377,29 +385,29 @@ export default function PrivacyPolicyPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed text-center">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Contact Us</h2>
+                <p className="text-lg text-gray-300 leading-relaxed text-center">
                   If you have any questions about this Privacy Policy or wish to exercise your privacy rights, 
                   please contact us:
                 </p>
                 <div className="space-y-4 text-center">
                   <div className="flex items-center justify-center space-x-3">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <span><strong>Email:</strong> team@ysoc.in</span>
+                    <Mail className="w-5 h-5 text-blue-400" />
+                    <span className="text-blue-400"><strong>Email:</strong> team@ysoc.in</span>
                   </div>
                 </div>
                 <div className="text-center">
-                  <Button asChild className="mt-4">
+                  <Button asChild className="mt-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300">
                     <Link href="/contact">
                       Contact Us
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

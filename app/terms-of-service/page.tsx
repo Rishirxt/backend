@@ -165,7 +165,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -173,32 +173,32 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Agreement to Terms</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Agreement to Terms</h2>
+                <p className="text-lg text-gray-300 leading-relaxed">
                   Welcome to Youth Season of Code (Y-SoC). These Terms of Service ("Terms") govern your 
                   participation in our program and use of our website and services. By participating in 
                   Y-SoC, you agree to be bound by these Terms.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg text-gray-300 leading-relaxed">
                   If you do not agree to these Terms, please do not participate in our program or use our services. 
                   We reserve the right to modify these Terms at any time, and your continued participation 
                   constitutes acceptance of any changes.
                 </p>
-                <div className="bg-muted/30 p-6 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
+                <div className="bg-gray-800/30 p-6 rounded-lg border border-gray-700/20">
+                  <p className="text-sm text-gray-300">
                     <strong>Last Updated:</strong> September 2025
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Core Principles */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -207,8 +207,8 @@ export default function TermsOfServicePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Core Principles</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Core Principles</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               These principles guide our program and define the expectations for all participants.
             </p>
           </motion.div>
@@ -221,16 +221,17 @@ export default function TermsOfServicePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="space-y-4">
-                    <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <principle.icon className="w-6 h-6 text-primary" />
+                <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+                      <principle.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold">{principle.title}</h3>
-                    <p className="text-muted-foreground">{principle.description}</p>
-                  </CardContent>
-                </Card>
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">{principle.title}</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">{principle.description}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -239,7 +240,7 @@ export default function TermsOfServicePage() {
 
 
       {/* Participant Obligations */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -248,8 +249,8 @@ export default function TermsOfServicePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Participant Obligations</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Participant Obligations</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               As a Y-SoC participant, you agree to fulfill these obligations throughout the program.
             </p>
           </motion.div>
@@ -262,18 +263,21 @@ export default function TermsOfServicePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6">
-                  <CardContent className="space-y-4">
+                <div className="h-full rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
                     <div className="flex items-start space-x-3">
-                      <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+                        <Users className="w-5 h-5 text-white" />
+                      </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">{obligation.obligation}</h3>
-                        <p className="text-muted-foreground text-sm">{obligation.description}</p>
+                        <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">{obligation.obligation}</h3>
+                        <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300">{obligation.description}</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -281,7 +285,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Prohibited Activities */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -290,8 +294,8 @@ export default function TermsOfServicePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Prohibited Activities</h2>
-            <p className="text-xl text-muted-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Prohibited Activities</h2>
+            <p className="text-xl text-gray-300">
               The following activities are strictly prohibited and may result in immediate termination.
             </p>
           </motion.div>
@@ -302,24 +306,24 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8">
-              <CardContent>
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8">
                 <div className="space-y-4">
                   {prohibitedActivities.map((activity, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <AlertTriangle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
-                      <p className="text-muted-foreground">{activity}</p>
+                      <p className="text-gray-300">{activity}</p>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Termination Conditions */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -328,8 +332,8 @@ export default function TermsOfServicePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Termination Conditions</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Termination Conditions</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Participation in Y-SoC may be terminated under the following circumstances.
             </p>
           </motion.div>
@@ -342,18 +346,21 @@ export default function TermsOfServicePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full p-6">
-                  <CardContent className="space-y-4">
+                <div className="h-full rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                  <div className="p-6">
                     <div className="flex items-start space-x-4">
-                      <AlertTriangle className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/30 group-hover:shadow-orange-500/50 transition-all duration-300">
+                        <AlertTriangle className="w-5 h-5 text-white" />
+                      </div>
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">{condition.condition}</h3>
-                        <p className="text-muted-foreground">{condition.description}</p>
+                        <h3 className="text-lg font-bold mb-2 text-white group-hover:text-orange-400 transition-colors duration-300">{condition.condition}</h3>
+                        <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">{condition.description}</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -361,7 +368,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Limitation of Liability */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -369,10 +376,10 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Limitation of Liability</h2>
-                <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Limitation of Liability</h2>
+                <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                   <p>
                     Y-SoC is provided on an "as is" basis. We make no warranties, express or implied, 
                     regarding the program's availability, quality, or outcomes. Participants participate 
@@ -389,14 +396,14 @@ export default function TermsOfServicePage() {
                     based on individual effort and circumstances.
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Information */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -404,29 +411,29 @@ export default function TermsOfServicePage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 md:p-12">
-              <CardContent className="space-y-6">
-                <h2 className="text-3xl font-bold text-center mb-8">Questions About These Terms?</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed text-center">
+            <div className="rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm shadow-xl">
+              <div className="p-8 md:p-12">
+                <h2 className="text-3xl font-bold text-center mb-8 text-white">Questions About These Terms?</h2>
+                <p className="text-lg text-gray-300 leading-relaxed text-center">
                   If you have any questions about these Terms of Service or need clarification on any 
                   aspect of the program, please contact us:
                 </p>
                 <div className="space-y-4 text-center">
                   <div className="flex items-center justify-center space-x-3">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <span><strong>Email:</strong> team@ysoc.in</span>
+                    <Mail className="w-5 h-5 text-blue-400" />
+                    <span className="text-blue-400"><strong>Email:</strong> team@ysoc.in</span>
                   </div>
                 </div>
                 <div className="text-center">
-                  <Button asChild className="mt-4">
+                  <Button asChild className="mt-4 bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-90 transition-all duration-300">
                     <Link href="/contact">
                       Contact Us
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
