@@ -123,19 +123,23 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-primary/20 hover:border-primary/40 transition-colors">
-                <CardContent className="p-8">
+              <div className="h-full rounded-2xl border-2 border-blue-500/50 bg-gray-900/50 backdrop-blur-sm hover:border-blue-400/70 transition-all duration-300 shadow-lg shadow-blue-500/10">
+                <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Target className="w-8 h-8 text-primary mr-3" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mr-4 shadow-lg shadow-blue-500/30">
+                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-white"></div>
+                      </div>
+                    </div>
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Mission</h2>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-white leading-relaxed">
                     To create a global platform where young developers can learn, grow, and contribute to open-source
                     projects while building meaningful connections and advancing their careers. We bridge the gap
                     between learning and real-world application through collaborative coding.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -144,19 +148,23 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-secondary/20 hover:border-secondary/40 transition-colors">
-                <CardContent className="p-8">
+              <div className="h-full rounded-2xl border-2 border-cyan-500/50 bg-gray-900/50 backdrop-blur-sm hover:border-cyan-400/70 transition-all duration-300 shadow-lg shadow-cyan-500/10">
+                <div className="p-8">
                   <div className="flex items-center mb-6">
-                    <Eye className="w-8 h-8 text-secondary mr-3" />
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 flex items-center justify-center mr-4 shadow-lg shadow-cyan-500/30">
+                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-3 h-3 rounded-full bg-white"></div>
+                      </div>
+                    </div>
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Our Vision</h2>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-white leading-relaxed">
                     To become the world's leading youth-driven open-source community, fostering innovation and
                     collaboration across borders. We envision a future where every young developer has the opportunity
                     to contribute to projects that matter and shape the digital world.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
