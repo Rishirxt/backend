@@ -145,6 +145,21 @@ export default function TimelinePage() {
             {/* Timeline Line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-600 via-gray-500 to-gray-600 transform md:-translate-x-0.5 shadow-lg shadow-gray-500/20" />
 
+            {/* Timeline Dots */}
+            {timelineEvents.map((event, index) => (
+              <div
+                key={`dot-${event.month}`}
+                className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full transform -translate-x-2 md:-translate-x-2 z-10 ${
+                  event.status === "current" 
+                    ? "bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/50" 
+                    : "bg-gray-600 shadow-lg shadow-gray-500/30"
+                }`}
+                style={{
+                  top: `${index * 20}rem` // Position dots at correct intervals
+                }}
+              />
+            ))}
+
             {/* Single Moving Dot */}
             <motion.div 
               className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 border-4 border-[#0A0F1C] transform -translate-x-3 md:-translate-x-3 z-20"
@@ -168,15 +183,6 @@ export default function TimelinePage() {
                   viewport={{ once: true }}
                   className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
-                  {/* Static Timeline Node */}
-                  <div 
-                    className={`absolute left-8 md:left-1/2 w-4 h-4 rounded-full transform -translate-x-2 md:-translate-x-2 z-10 ${
-                      event.status === "current" 
-                        ? "bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/50" 
-                        : "bg-gray-600 shadow-lg shadow-gray-500/30"
-                    }`}
-                  />
-
                   {/* Content Card */}
                   <div
                     className={`w-full md:w-5/12 ml-16 md:ml-0 ${
