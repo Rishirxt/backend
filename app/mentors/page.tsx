@@ -28,7 +28,7 @@ export default function MentorsPage() {
 
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black scroll-smooth">
       <Navigation />
 
       {/* Hero Section */}
@@ -72,7 +72,7 @@ export default function MentorsPage() {
       </section>
 
       {/* Mentors Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -177,7 +177,7 @@ export default function MentorsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/40 via-gray-800/20 to-gray-900/40 relative overflow-hidden page-transition">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
