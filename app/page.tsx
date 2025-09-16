@@ -7,13 +7,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { ArrowRight, Code, Users, Zap, Globe, Calendar, Trophy, ChevronUp, Briefcase, GraduationCap, Palette, BookOpen } from "lucide-react"
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
-import { useEffect, useState, useCallback, useMemo, lazy, Suspense } from "react"
-import { animations, getTransition } from "@/lib/animations"
-
-// Lazy load heavy WebGL components for better performance
-const Plasma = lazy(() => import("@/components/Plasma"))
-const PixelBlast = lazy(() => import("@/components/PixelBlast"))
+import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { useEffect, useState, useCallback } from "react"
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -126,58 +121,28 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen flex items-center">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-        
-        {/* Light mode contrast overlay */}
-        <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
-        
-        {/* Animated Plasma Background */}
-        <div className="absolute inset-0 opacity-90 dark:opacity-30">
-          <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5" />}>
-            <Plasma
-              color="#a259ff"
-              speed={0.8}
-              direction="horizontal"
-              scale={1.0}
-              opacity={0.6}
-              mouseInteractive={false}
-            />
-          </Suspense>
-        </div>
+        {/* Simplified Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
             <div className="mb-6">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  October 2025 - March 2026
-                </Badge>
-              </motion.div>
+              <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/10 transition-all duration-300 text-white">
+                <Calendar className="w-4 h-4 mr-2" />
+                October 2025 - March 2026
+              </Badge>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated">
-              <motion.span 
-                className="gradient-text inline-block"
-                whileHover={animations.hover}
-                transition={getTransition(0.2)}
-              >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent inline-block">
                 Youth Season
-              </motion.span>
+              </span>
               <br />
-              <motion.span 
-                className="gradient-text inline-block"
-                whileHover={animations.hover}
-                transition={getTransition(0.2)}
-              >
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent inline-block">
                 of Code
-              </motion.span>
+              </span>
             </h1>
 
             <div className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -199,47 +164,35 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <motion.div
-                whileHover={animations.hover}
-                whileTap={animations.button.whileTap}
-                transition={getTransition(0.2)}
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl"
+                onClick={() => {
+                  const featuresSection = document.querySelector('#features')
+                  if (featuresSection) {
+                    featuresSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
               >
-                <Button
-                  asChild
-                  size="lg"
-                  className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
-                  onClick={() => {
-                    const featuresSection = document.querySelector('#features')
-                    if (featuresSection) {
-                      featuresSection.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                >
-                  <Link href="/recruit" className="flex items-center group">
-                    Join Y-SOC <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={animations.hover}
-                whileTap={animations.button.whileTap}
-                transition={getTransition(0.2)}
+                <Link href="/recruit" className="flex items-center group">
+                  Join Y-SOC <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white bg-transparent transition-all duration-300 hover:shadow-lg"
+                onClick={() => {
+                  const featuresSection = document.querySelector('#features')
+                  if (featuresSection) {
+                    featuresSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
               >
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent transition-all duration-300 hover:shadow-lg"
-                  onClick={() => {
-                    const featuresSection = document.querySelector('#features')
-                    if (featuresSection) {
-                      featuresSection.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                >
-                  <Link href="/about">Learn More</Link>
-                </Button>
-              </motion.div>
+                <Link href="/about">Learn More</Link>
+              </Button>
             </div>
 
           </div>
@@ -252,47 +205,29 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Why Join Y-SoC?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">Why Join Y-SoC?</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Experience the power of collaborative coding and accelerate your development journey
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <Card className="h-full hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/50 group cursor-pointer">
+              <div key={feature.title} className="group">
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-gray-700/50 hover:border-blue-500/50 group cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <motion.div 
-                      className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center mx-auto mb-4 neon-glow group-hover:scale-110 transition-transform duration-300"
-                      whileHover={{ 
-                        rotate: [0, -10, 10, 0],
-                        transition: { duration: 0.5 }
-                      }}
-                    >
-                      <feature.icon className="h-6 w-6 text-white group-hover:scale-110 transition-transform duration-300" />
-                    </motion.div>
-                    <motion.h3 
-                      className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">
                       {feature.title}
-                    </motion.h3>
-                    <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                    </h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
                       {feature.description}
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -302,8 +237,8 @@ export default function HomePage() {
       <section id="roles" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Find Your Role</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">Find Your Role</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Whether you're a beginner or expert, there's a place for you in our community
             </p>
           </div>
@@ -312,15 +247,8 @@ export default function HomePage() {
             {/* First Row - 3 roles */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               {roles.slice(0, 3).map((role, index) => (
-                <motion.div
-                  key={role.name}
-                  whileInView={animations.scale.animate}
-                  transition={getTransition(0.4)}
-                  viewport={animations.scrollReveal.viewport}
-                  whileHover={animations.card.whileHover}
-                  className="cursor-pointer group"
-                >
-                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                <div key={role.name} className="cursor-pointer group">
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
                     <div className="p-6">
                       {/* Modern Icon */}
                       <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
@@ -338,22 +266,15 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Second Row - 2 roles centered */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {roles.slice(3, 5).map((role, index) => (
-                <motion.div
-                  key={role.name}
-                  whileInView={animations.scale.animate}
-                  transition={getTransition(0.4)}
-                  viewport={animations.scrollReveal.viewport}
-                  whileHover={animations.card.whileHover}
-                  className="cursor-pointer group"
-                >
-                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                <div key={role.name} className="cursor-pointer group">
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
                     <div className="p-6">
                       {/* Modern Icon */}
                       <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
@@ -371,7 +292,7 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -379,75 +300,26 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/40 via-gray-800/20 to-gray-900/40 relative overflow-hidden page-transition">
-        {/* Light mode contrast overlay */}
-        <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
-        
-        {/* PixelBlast Interactive Background */}
-        <div className="absolute inset-0 opacity-60 dark:opacity-40">
-          <Suspense fallback={<div className="w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10" />}>
-            <PixelBlast
-              variant="circle"
-              pixelSize={6}
-              color="#B19EEF"
-              patternScale={3}
-              patternDensity={1.2}
-              pixelSizeJitter={0.5}
-              enableRipples
-              rippleSpeed={0.4}
-              rippleThickness={0.12}
-              rippleIntensityScale={1.5}
-              liquid
-              liquidStrength={0.12}
-              liquidRadius={1.2}
-              liquidWobbleSpeed={5}
-              speed={0.6}
-              edgeFade={0.25}
-              transparent
-            />
-          </Suspense>
-        </div>
-        
-       
+      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/40 via-gray-800/20 to-gray-900/40 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div>
-            <motion.div
-              whileHover={{ 
-                scale: 1.1,
-                rotate: [0, -5, 5, 0],
-                transition: { duration: 0.5 }
-              }}
-            >
-              <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg" />
-            </motion.div>
-            <motion.h2 
-              className="text-3xl md:text-5xl font-bold gradient-text mb-6"
-              whileHover={{ 
-                scale: 1.02,
-                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
-              }}
-            >
+            <Trophy className="w-16 h-16 mx-auto mb-6 text-blue-500 drop-shadow-lg" />
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">
               Ready to Start Coding?
-            </motion.h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Join thousands of young developers building the future of open source. Your journey starts here.
             </p>
             <div className="flex justify-center">
-              <motion.div
-                whileHover={animations.hover}
-                whileTap={animations.button.whileTap}
-                transition={getTransition(0.2)}
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                <Button
-                  asChild
-                  size="lg"
-                  className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
-                >
-                  <Link href="/recruit" className="flex items-center group">
-                    Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </motion.div>
+                <Link href="/recruit" className="flex items-center group">
+                  Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -457,23 +329,15 @@ export default function HomePage() {
       <Footer />
 
       {/* Smooth Scroll to Top Button */}
-      <motion.button
+      <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-        animate={{ 
-          opacity: showScrollTop ? 1 : 0,
-          scale: showScrollTop ? 1 : 0
-        }}
-        whileHover={{ 
-          scale: 1.1,
-          y: -2
-        }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.2 }}
+        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 ${
+          showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+        }`}
         aria-label="Scroll to top"
       >
         <ChevronUp className="h-5 w-5" />
-      </motion.button>
+      </button>
       </div>
   )
 }
