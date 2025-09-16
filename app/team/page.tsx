@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Twitter, Globe, Mail, MapPin } from "lucide-react"
@@ -106,25 +107,36 @@ export default function TeamPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <div className="max-w-7xl mx-auto relative">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
-              Meet Our Team
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">The People Behind Y-SoC</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our diverse team of organizers, mentors, and contributors from around the world are united by a shared
-              passion for open source and youth empowerment.
-            </p>
-          </motion.div>
-        </div>
+      <section className="pt-32 relative overflow-hidden">
+        <BackgroundBeamsWithCollision className="h-[40rem] bg-gradient-to-b from-black to-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
+                Meet Our Team
+              </Badge>
+              <h1 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-white font-sans tracking-tight mb-6">
+                The People Behind{" "}
+                <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
+                  <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
+                    <span className="">Y-SoC</span>
+                  </div>
+                  <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
+                    <span className="">Y-SoC</span>
+                  </div>
+                </div>
+              </h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Our diverse team of organizers, mentors, and contributors from around the world are united by a shared
+                passion for open source and youth empowerment.
+              </p>
+            </motion.div>
+          </div>
+        </BackgroundBeamsWithCollision>
       </section>
 
       {/* Core Team */}
