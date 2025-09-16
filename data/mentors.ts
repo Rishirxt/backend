@@ -247,7 +247,7 @@ export const mentors: Mentor[] = [
     name: "Dr. Anita X",
     role: "Associate Professor",
     company: "VIT Chennai",
-    avatar: "/anita.jp",
+    avatar: "/anita.jpg",
     expertise: ["Network Security", "Data Analytics", "Image Processing", "Computer Vision", "Machine Learning", "Information Security", "Research", "Academic Writing", "PhD Supervision", "Curriculum Development"],
     experience: "15+ years",
     bio: "Associate Professor at VIT Chennai with PhD from Anna University. Specializes in Network Security, Data Analytics, and Image Processing. Published researcher with H-index of 5 and extensive experience in academic research and mentoring students.",
