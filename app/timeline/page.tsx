@@ -68,20 +68,43 @@ export default function TimelinePage() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Particles Background */}
+        {/* Particles Background - Fire Effect */}
         <div className="absolute inset-0">
+          {/* Red particles */}
           <Particles
-            particleCount={40}
+            particleCount={25}
             particleSize={3}
+            particleSpeed={1.0}
+            particleColor="#FF0000"
+            backgroundColor="transparent"
+            opacity={0.5}
+            connectionDistance={80}
+            connectionColor="#FF3333"
+          />
+          {/* Orange particles */}
+          <Particles
+            particleCount={25}
+            particleSize={4}
+            particleSpeed={1.4}
+            particleColor="#FF6B35"
+            backgroundColor="transparent"
+            opacity={0.6}
+            connectionDistance={90}
+            connectionColor="#FF8C42"
+          />
+          {/* Amber particles */}
+          <Particles
+            particleCount={20}
+            particleSize={2}
             particleSpeed={0.8}
-            particleColor="#0096FF"
+            particleColor="#FFA500"
             backgroundColor="transparent"
             opacity={0.4}
-            connectionDistance={120}
-            connectionColor="#0096FF"
+            connectionDistance={70}
+            connectionColor="#FFB84D"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-transparent to-cyan-500/3" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/3 to-yellow-500/5" />
         <div className="max-w-7xl mx-auto relative">
           <motion.div
             className="text-center mb-16"
