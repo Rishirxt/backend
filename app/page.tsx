@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { ArrowRight, Code, Users, Zap, Globe, Calendar, Trophy, ChevronUp, Briefcase, GraduationCap, Palette, BookOpen } from "lucide-react"
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
-import { useEffect, useState, useCallback, useMemo, lazy, Suspense, memo } from "react"
+import { useEffect, useState, useCallback, useMemo, lazy, Suspense } from "react"
 import { animations, getTransition } from "@/lib/animations"
 
 // Lazy load heavy WebGL components for better performance
@@ -18,13 +18,14 @@ const PixelBlast = lazy(() => import("@/components/PixelBlast"))
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const { scrollYProgress } = useScroll()
-  
-  // Optimized spring with reduced complexity
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.01
+    stiffness: 200,
+    damping: 40,
+    restDelta: 0.001
   })
+
+  // Performance optimization: use transform instead of changing width
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   // Optimized scroll handler with throttling
   const handleScroll = useCallback(() => {
@@ -51,8 +52,7 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Memoized static data to prevent re-renders
-  const features = useMemo(() => [
+  const features = [
     {
       icon: Code,
       title: "Open Source Projects",
@@ -73,9 +73,10 @@ export default function HomePage() {
       title: "Remote Collaboration",
       description: "Work with distributed teams and master modern development workflows.",
     },
-  ], [])
+  ]
 
-  const roles = useMemo(() => [
+
+  const roles = [
     { 
       name: "Project Leads", 
       color: "bg-blue-500", 
@@ -111,18 +112,14 @@ export default function HomePage() {
       icon: BookOpen,
       description: "Start your open-source journey" 
     },
-  ], [])
+  ]
 
   return (
     <div className="min-h-screen bg-black scroll-smooth">
         {/* Optimized Scroll Progress Bar */}
         <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-50 origin-left"
-          style={{ 
-            scaleX,
-            willChange: 'transform',
-            transform: 'translateZ(0)'
-          }}
+          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-50 origin-left gpu-accelerated"
+          style={{ scaleX }}
         />
         
         <Navigation />
@@ -165,20 +162,22 @@ export default function HomePage() {
               </motion.div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-              <span 
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated">
+              <motion.span 
                 className="gradient-text inline-block"
-                style={{ willChange: 'transform' }}
+                whileHover={animations.hover}
+                transition={getTransition(0.2)}
               >
                 Youth Season
-              </span>
+              </motion.span>
               <br />
-              <span 
+              <motion.span 
                 className="gradient-text inline-block"
-                style={{ willChange: 'transform' }}
+                whileHover={animations.hover}
+                transition={getTransition(0.2)}
               >
                 of Code
-              </span>
+              </motion.span>
             </h1>
 
             <div className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -200,35 +199,47 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Button
-                asChild
-                size="lg"
-                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
-                onClick={() => {
-                  const featuresSection = document.querySelector('#features')
-                  if (featuresSection) {
-                    featuresSection.scrollIntoView({ behavior: 'smooth' })
-                  }
-                }}
+              <motion.div
+                whileHover={animations.hover}
+                whileTap={animations.button.whileTap}
+                transition={getTransition(0.2)}
               >
-                <Link href="/recruit" className="flex items-center group">
-                  Join Y-SOC <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent transition-all duration-300 hover:shadow-lg"
-                onClick={() => {
-                  const featuresSection = document.querySelector('#features')
-                  if (featuresSection) {
-                    featuresSection.scrollIntoView({ behavior: 'smooth' })
-                  }
-                }}
+                <Button
+                  asChild
+                  size="lg"
+                  className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
+                  onClick={() => {
+                    const featuresSection = document.querySelector('#features')
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                >
+                  <Link href="/recruit" className="flex items-center group">
+                    Join Y-SOC <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={animations.hover}
+                whileTap={animations.button.whileTap}
+                transition={getTransition(0.2)}
               >
-                <Link href="/about">Learn More</Link>
-              </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent transition-all duration-300 hover:shadow-lg"
+                  onClick={() => {
+                    const featuresSection = document.querySelector('#features')
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                >
+                  <Link href="/about">Learn More</Link>
+                </Button>
+              </motion.div>
             </div>
 
           </div>
@@ -252,18 +263,30 @@ export default function HomePage() {
               <motion.div
                 key={feature.title}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/50 cursor-pointer">
+                <Card className="h-full hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/50 group cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center mx-auto mb-4 neon-glow group-hover:scale-110 transition-transform duration-300">
+                    <motion.div 
+                      className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center mx-auto mb-4 neon-glow group-hover:scale-110 transition-transform duration-300"
+                      whileHover={{ 
+                        rotate: [0, -10, 10, 0],
+                        transition: { duration: 0.5 }
+                      }}
+                    >
                       <feature.icon className="h-6 w-6 text-white group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                    </motion.div>
+                    <motion.h3 
+                      className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
                       {feature.title}
-                    </h3>
+                    </motion.h3>
                     <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
                       {feature.description}
                     </p>
@@ -291,9 +314,10 @@ export default function HomePage() {
               {roles.slice(0, 3).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  whileInView={animations.scale.animate}
+                  transition={getTransition(0.4)}
+                  viewport={animations.scrollReveal.viewport}
+                  whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -323,9 +347,10 @@ export default function HomePage() {
               {roles.slice(3, 5).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: (index + 3) * 0.1 }}
-                  viewport={{ once: true }}
+                  whileInView={animations.scale.animate}
+                  transition={getTransition(0.4)}
+                  viewport={animations.scrollReveal.viewport}
+                  whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -386,25 +411,43 @@ export default function HomePage() {
        
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div>
-            <div className="group">
-              <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg group-hover:scale-110 transition-transform duration-300" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">
+            <motion.div
+              whileHover={{ 
+                scale: 1.1,
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.5 }
+              }}
+            >
+              <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg" />
+            </motion.div>
+            <motion.h2 
+              className="text-3xl md:text-5xl font-bold gradient-text mb-6"
+              whileHover={{ 
+                scale: 1.02,
+                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+              }}
+            >
               Ready to Start Coding?
-            </h2>
+            </motion.h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join thousands of young developers building the future of open source. Your journey starts here.
             </p>
             <div className="flex justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
+              <motion.div
+                whileHover={animations.hover}
+                whileTap={animations.button.whileTap}
+                transition={getTransition(0.2)}
               >
-                <Link href="/recruit" className="flex items-center group">
-                  Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
+                >
+                  <Link href="/recruit" className="flex items-center group">
+                    Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -421,9 +464,13 @@ export default function HomePage() {
           opacity: showScrollTop ? 1 : 0,
           scale: showScrollTop ? 1 : 0
         }}
+        whileHover={{ 
+          scale: 1.1,
+          y: -2
+        }}
+        whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.2 }}
         aria-label="Scroll to top"
-        style={{ willChange: 'transform, opacity' }}
       >
         <ChevronUp className="h-5 w-5" />
       </motion.button>

@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BackgroundBeams } from "@/components/ui/background-beams"
+import GridDotBackground from "@/components/GridDotBackground"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { animations, getTransition } from "@/lib/animations"
@@ -17,8 +17,21 @@ export default function SponsorsPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="h-[40rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
-        <div className="max-w-2xl mx-auto p-4">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[80vh] flex items-center">
+        <div className="absolute inset-0">
+          <GridDotBackground
+            dotSize={2}
+            dotSpacing={40}
+            dotColor="#8b5cf6"
+            backgroundColor="transparent"
+            opacity={0.3}
+            animationSpeed={0.7}
+            pulseIntensity={0.4}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
@@ -32,7 +45,7 @@ export default function SponsorsPage() {
           </motion.div>
 
           <motion.h1
-            className="relative z-10 text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold mb-8"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated"
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
             transition={getTransition(0.8)}
@@ -43,7 +56,7 @@ export default function SponsorsPage() {
           </motion.h1>
 
           <motion.p
-            className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10"
+            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
             transition={getTransition(0.6)}
@@ -52,7 +65,7 @@ export default function SponsorsPage() {
           </motion.p>
 
           <motion.div
-            className="flex justify-center items-center mt-8"
+            className="flex justify-center items-center"
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
             transition={getTransition(0.6)}
@@ -64,7 +77,7 @@ export default function SponsorsPage() {
             >
               <Button
                 size="lg"
-                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl relative z-10"
+                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
                 onClick={() => window.open("https://mail.google.com/mail/?view=cm&fs=1&to=team@ysoc.in&su=Sponsorship Inquiry", "_blank")}
               >
                 <Mail className="w-5 h-5 mr-2" />
@@ -73,7 +86,6 @@ export default function SponsorsPage() {
             </motion.div>
           </motion.div>
         </div>
-        <BackgroundBeams />
       </section>
 
       {/* Why Sponsor Section */}
