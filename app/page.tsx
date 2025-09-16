@@ -12,8 +12,6 @@ import { useEffect, useState, useCallback, useMemo, lazy, Suspense } from "react
 import { animations, getTransition } from "@/lib/animations"
 
 // Lazy load heavy WebGL components for better performance
-const Plasma = lazy(() => import("@/components/Plasma"))
-const PixelBlast = lazy(() => import("@/components/PixelBlast"))
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -157,19 +155,8 @@ export default function HomePage() {
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
         
-        {/* Animated Plasma Background */}
-        <div className="absolute inset-0 opacity-90 dark:opacity-30">
-          <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5" />}>
-            <Plasma
-              color="#a259ff"
-              speed={0.8}
-              direction="horizontal"
-              scale={1.0}
-              opacity={0.6}
-              mouseInteractive={false}
-            />
-          </Suspense>
-        </div>
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -473,30 +460,8 @@ export default function HomePage() {
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
         
-        {/* PixelBlast Interactive Background */}
-        <div className="absolute inset-0 opacity-60 dark:opacity-40">
-          <Suspense fallback={<div className="w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10" />}>
-            <PixelBlast
-              variant="circle"
-              pixelSize={6}
-              color="#B19EEF"
-              patternScale={3}
-              patternDensity={1.2}
-              pixelSizeJitter={0.5}
-              enableRipples
-              rippleSpeed={0.4}
-              rippleThickness={0.12}
-              rippleIntensityScale={1.5}
-              liquid
-              liquidStrength={0.12}
-              liquidRadius={1.2}
-              liquidWobbleSpeed={5}
-              speed={0.6}
-              edgeFade={0.25}
-              transparent
-            />
-          </Suspense>
-        </div>
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10" />
         
        
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -508,9 +473,8 @@ export default function HomePage() {
           >
             <motion.div
               whileHover={{ 
-                scale: 1.1,
-                rotate: [0, -5, 5, 0],
-                transition: { duration: 0.5 }
+                scale: 1.05,
+                transition: { duration: 0.3 }
               }}
             >
               <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg" />
