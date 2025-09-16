@@ -58,8 +58,8 @@ export function Footer() {
     <footer className="bg-black border-t border-gray-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid lg:grid-cols-5 gap-8">
+        <div className="py-20">
+          <div className="grid lg:grid-cols-5 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <motion.div
@@ -133,20 +133,21 @@ export function Footer() {
             </div>
 
             {/* Links Sections */}
-            <div className="lg:col-span-3 grid md:grid-cols-4 gap-8">
+            <div className="lg:col-span-3 grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
+                className="space-y-6"
               >
-                <h3 className="font-bold text-white mb-4">Program</h3>
-                <ul className="space-y-3">
+                <h3 className="font-bold text-white mb-6 text-lg">Program</h3>
+                <ul className="space-y-4">
                   {footerLinks.program.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-gray-300 hover:text-white transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm block py-1"
                       >
                         {link.label}
                       </Link>
@@ -160,14 +161,15 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
+                className="space-y-6"
               >
-                <h3 className="font-bold text-white mb-4">Community</h3>
-                <ul className="space-y-3">
+                <h3 className="font-bold text-white mb-6 text-lg">Community</h3>
+                <ul className="space-y-4">
                   {footerLinks.community.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-gray-300 hover:text-white transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm block py-1"
                         target={link.href.startsWith('http') ? '_blank' : '_self'}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -183,14 +185,15 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
+                className="space-y-6"
               >
-                <h3 className="font-bold text-white mb-4">Community Partners</h3>
-                <ul className="space-y-3">
+                <h3 className="font-bold text-white mb-6 text-lg">Community Partners</h3>
+                <ul className="space-y-4">
                   {footerLinks.communityPartners.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-gray-300 hover:text-white transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm block py-1"
                         target={link.href.startsWith('http') ? '_blank' : '_self'}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -206,14 +209,15 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
+                className="space-y-6"
               >
-                <h3 className="font-bold text-white mb-4">Support</h3>
-                <ul className="space-y-3">
+                <h3 className="font-bold text-white mb-6 text-lg">Support</h3>
+                <ul className="space-y-4">
                   {footerLinks.support.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-gray-300 hover:text-white transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm block py-1"
                       >
                         {link.label}
                       </Link>
@@ -226,7 +230,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-gray-800/50">
+        <div className="py-8 border-t border-gray-800/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
             <motion.div
