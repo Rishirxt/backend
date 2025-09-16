@@ -7,20 +7,24 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { ArrowRight, Code, Users, Zap, Globe, Calendar, Trophy, ChevronUp, Briefcase, GraduationCap, Palette, BookOpen } from "lucide-react"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-import { useEffect, useState, useCallback } from "react"
+import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
+import { useEffect, useState, useCallback, useMemo, lazy, Suspense, memo } from "react"
+import { animations, getTransition } from "@/lib/animations"
+
+// Lazy load heavy WebGL components for better performance
+const Plasma = lazy(() => import("@/components/Plasma"))
+const PixelBlast = lazy(() => import("@/components/PixelBlast"))
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const { scrollYProgress } = useScroll()
+  
+  // Optimized spring with reduced complexity
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 200,
-    damping: 40,
-    restDelta: 0.001
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.01
   })
-
-  // Performance optimization: use transform instead of changing width
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
   // Optimized scroll handler with throttling
   const handleScroll = useCallback(() => {
@@ -47,7 +51,8 @@ export default function HomePage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const features = [
+  // Memoized static data to prevent re-renders
+  const features = useMemo(() => [
     {
       icon: Code,
       title: "Open Source Projects",
@@ -68,10 +73,9 @@ export default function HomePage() {
       title: "Remote Collaboration",
       description: "Work with distributed teams and master modern development workflows.",
     },
-  ]
+  ], [])
 
-
-  const roles = [
+  const roles = useMemo(() => [
     { 
       name: "Project Leads", 
       color: "bg-blue-500", 
@@ -107,40 +111,72 @@ export default function HomePage() {
       icon: BookOpen,
       description: "Start your open-source journey" 
     },
-  ]
+  ], [])
 
   return (
     <div className="min-h-screen bg-black scroll-smooth">
         {/* Optimized Scroll Progress Bar */}
         <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-50 origin-left gpu-accelerated"
-          style={{ scaleX }}
+          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary z-50 origin-left"
+          style={{ 
+            scaleX,
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
         />
         
         <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen flex items-center">
-        {/* Simplified Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        
+        {/* Light mode contrast overlay */}
+        <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
+        
+        {/* Animated Plasma Background */}
+        <div className="absolute inset-0 opacity-90 dark:opacity-30">
+          <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5" />}>
+            <Plasma
+              color="#a259ff"
+              speed={0.8}
+              direction="horizontal"
+              scale={1.0}
+              opacity={0.6}
+              mouseInteractive={false}
+            />
+          </Suspense>
+        </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
             <div className="mb-6">
-              <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/10 transition-all duration-300 text-white">
-                <Calendar className="w-4 h-4 mr-2" />
-                October 2025 - March 2026
-              </Badge>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  October 2025 - March 2026
+                </Badge>
+              </motion.div>
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+              <span 
+                className="gradient-text inline-block"
+                style={{ willChange: 'transform' }}
+              >
                 Youth Season
               </span>
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+              <span 
+                className="gradient-text inline-block"
+                style={{ willChange: 'transform' }}
+              >
                 of Code
               </span>
             </h1>
@@ -167,7 +203,7 @@ export default function HomePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
                 onClick={() => {
                   const featuresSection = document.querySelector('#features')
                   if (featuresSection) {
@@ -183,7 +219,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white bg-transparent transition-all duration-300 hover:shadow-lg"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent transition-all duration-300 hover:shadow-lg"
                 onClick={() => {
                   const featuresSection = document.querySelector('#features')
                   if (featuresSection) {
@@ -205,29 +241,35 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">Why Join Y-SoC?</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Why Join Y-SoC?</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Experience the power of collaborative coding and accelerate your development journey
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={feature.title} className="group">
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-gray-700/50 hover:border-blue-500/50 group cursor-pointer">
+              <motion.div
+                key={feature.title}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/50 cursor-pointer">
                   <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center mx-auto mb-4 neon-glow group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="h-6 w-6 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                    <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
                       {feature.description}
                     </p>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -237,8 +279,8 @@ export default function HomePage() {
       <section id="roles" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">Find Your Role</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Find Your Role</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Whether you're a beginner or expert, there's a place for you in our community
             </p>
           </div>
@@ -247,8 +289,14 @@ export default function HomePage() {
             {/* First Row - 3 roles */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               {roles.slice(0, 3).map((role, index) => (
-                <div key={role.name} className="cursor-pointer group">
-                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                <motion.div
+                  key={role.name}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="cursor-pointer group"
+                >
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
                     <div className="p-6">
                       {/* Modern Icon */}
                       <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
@@ -266,15 +314,21 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
             {/* Second Row - 2 roles centered */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {roles.slice(3, 5).map((role, index) => (
-                <div key={role.name} className="cursor-pointer group">
-                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
+                <motion.div
+                  key={role.name}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: (index + 3) * 0.1 }}
+                  viewport={{ once: true }}
+                  className="cursor-pointer group"
+                >
+                  <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
                     <div className="p-6">
                       {/* Modern Icon */}
                       <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
@@ -292,7 +346,7 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -300,21 +354,52 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/40 via-gray-800/20 to-gray-900/40 relative overflow-hidden">
+      <section id="cta" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-900/40 via-gray-800/20 to-gray-900/40 relative overflow-hidden page-transition">
+        {/* Light mode contrast overlay */}
+        <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
+        
+        {/* PixelBlast Interactive Background */}
+        <div className="absolute inset-0 opacity-60 dark:opacity-40">
+          <Suspense fallback={<div className="w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10" />}>
+            <PixelBlast
+              variant="circle"
+              pixelSize={6}
+              color="#B19EEF"
+              patternScale={3}
+              patternDensity={1.2}
+              pixelSizeJitter={0.5}
+              enableRipples
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid
+              liquidStrength={0.12}
+              liquidRadius={1.2}
+              liquidWobbleSpeed={5}
+              speed={0.6}
+              edgeFade={0.25}
+              transparent
+            />
+          </Suspense>
+        </div>
+        
+       
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div>
-            <Trophy className="w-16 h-16 mx-auto mb-6 text-blue-500 drop-shadow-lg" />
-            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-6">
+            <div className="group">
+              <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">
               Ready to Start Coding?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join thousands of young developers building the future of open source. Your journey starts here.
             </p>
             <div className="flex justify-center">
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="gradient-primary text-white hover:opacity-90 transition-all duration-300 neon-glow shadow-lg hover:shadow-xl"
               >
                 <Link href="/recruit" className="flex items-center group">
                   Apply Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -329,15 +414,19 @@ export default function HomePage() {
       <Footer />
 
       {/* Smooth Scroll to Top Button */}
-      <button
+      <motion.button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 ${
-          showScrollTop ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-        }`}
+        className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+        animate={{ 
+          opacity: showScrollTop ? 1 : 0,
+          scale: showScrollTop ? 1 : 0
+        }}
+        transition={{ duration: 0.2 }}
         aria-label="Scroll to top"
+        style={{ willChange: 'transform, opacity' }}
       >
         <ChevronUp className="h-5 w-5" />
-      </button>
+      </motion.button>
       </div>
   )
 }
