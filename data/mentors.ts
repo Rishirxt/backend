@@ -232,7 +232,7 @@ export const mentors: Mentor[] = [
     name: "Jiten S.",
     role: "Software Development Engineer II",
     company: "Amazon",
-    avatar: "/professional-headshot-of-young-asian-developer.jpg",
+    avatar: "/placeholder-user.jpg",
     expertise: ["C++", "Python", "Machine Learning", "Computer Vision", "Web Development", "Data Structures", "Algorithms", "Django", "AWS", "System Design", "Full Stack Development"],
     experience: "6+ years",
     bio: "Software Development Engineer II at Amazon with extensive experience in machine learning, computer vision, and web development. Former Teaching Assistant at Coding Ninjas and experienced mentor.",
