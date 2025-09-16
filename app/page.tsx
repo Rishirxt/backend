@@ -128,8 +128,31 @@ export default function HomePage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen flex items-center">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+        <motion.div 
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
         
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
@@ -207,9 +230,18 @@ export default function HomePage() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <div className="font-semibold text-foreground bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                <motion.div 
+                  className="font-semibold text-foreground"
+                  style={{
+                    background: "linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6)",
+                    backgroundSize: "200% 100%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text"
+                  }}
+                >
                   You Code, You Create, You Collaborate
-                </div>
+                </motion.div>
                 <div>Join the global youth open-source community and build the future together</div>
               </motion.div>
             </motion.div>
@@ -269,16 +301,27 @@ export default function HomePage() {
 
       {/* Features Section */}
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
-        {/* Static decorative elements */}
+        {/* Optimized floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {useMemo(() => 
             [...Array(6)].map((_, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="absolute w-2 h-2 bg-primary/20 rounded-full"
+                className="absolute w-2 h-2 bg-primary/20 rounded-full gpu-accelerated"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  opacity: [0.2, 0.8, 0.2],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                  ease: "easeInOut",
                 }}
               />
             )), [])
@@ -361,11 +404,10 @@ export default function HomePage() {
               {roles.slice(0, 3).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  initial={animations.scale.initial}
-                  whileInView={animations.scale.animate}
-                  transition={getTransition(0.4)}
-                  viewport={animations.scrollReveal.viewport}
-                  whileHover={animations.card.whileHover}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -395,11 +437,10 @@ export default function HomePage() {
               {roles.slice(3, 5).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  initial={animations.scale.initial}
-                  whileInView={animations.scale.animate}
-                  transition={getTransition(0.4)}
-                  viewport={animations.scrollReveal.viewport}
-                  whileHover={animations.card.whileHover}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
+                  viewport={{ once: true }}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -465,12 +506,24 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div>
+            <motion.div
+              whileHover={{ 
+                scale: 1.1,
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.5 }
+              }}
+            >
               <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">
+            </motion.div>
+            <motion.h2 
+              className="text-3xl md:text-5xl font-bold gradient-text mb-6"
+              whileHover={{ 
+                scale: 1.02,
+                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+              }}
+            >
               Ready to Start Coding?
-            </h2>
+            </motion.h2>
             <motion.p 
               className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
