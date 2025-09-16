@@ -107,19 +107,32 @@ export default function TeamPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 relative overflow-hidden">
-        <BackgroundBeamsWithCollision className="h-[40rem]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <section className="relative overflow-hidden">
+        <BackgroundBeamsWithCollision className="h-[50rem]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex items-center justify-center min-h-[50rem]">
             <motion.div
-              className="text-center mb-16"
+              className="text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Badge variant="secondary" className="mb-4 px-4 py-2 border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
-                Meet Our Team
-              </Badge>
-              <h1 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-white font-sans tracking-tight mb-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mb-8"
+              >
+                <Badge variant="secondary" className="px-6 py-3 text-sm font-medium border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
+                  Meet Our Team
+                </Badge>
+              </motion.div>
+              
+              <motion.h1
+                className="text-4xl md:text-6xl lg:text-8xl font-bold text-center text-white font-sans tracking-tight mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
                 The People Behind{" "}
                 <div className="relative mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
                   <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
@@ -129,29 +142,41 @@ export default function TeamPage() {
                     <span className="">Y-SoC</span>
                   </div>
                 </div>
-              </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              </motion.h1>
+              
+              <motion.p
+                className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
                 Our diverse team of organizers, mentors, and contributors from around the world are united by a shared
                 passion for open source and youth empowerment.
-              </p>
+              </motion.p>
             </motion.div>
           </div>
         </BackgroundBeamsWithCollision>
       </section>
 
       {/* Core Team */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Core Team</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The dedicated organizers who make Y-SoC possible
+            <Badge variant="secondary" className="mb-6 px-6 py-3 text-sm font-medium border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
+              Core Team
+            </Badge>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+              The People Behind Y-SoC
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              The dedicated organizers who make Y-SoC possible through their passion, expertise, and commitment to empowering youth in open source.
             </p>
           </motion.div>
 
@@ -166,7 +191,7 @@ export default function TeamPage() {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-gray-800/50 hover:border-blue-500/50 overflow-hidden bg-gray-900/50 backdrop-blur-sm">
                   <CardContent className="p-0">
                     <div className="relative overflow-hidden">
                       <img
@@ -174,14 +199,14 @@ export default function TeamPage() {
                         alt={member.name}
                         className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="flex gap-2">
                           {member.social.github && (
                             <Button 
                               size="sm" 
                               variant="secondary" 
-                              className="w-8 h-8 p-0 hover:bg-primary hover:text-primary-foreground transition-colors"
+                              className="w-8 h-8 p-0 hover:bg-primary hover:text-primary-foreground transition-colors bg-white/10 border-white/20"
                               asChild
                             >
                               <Link href={`https://github.com/${member.social.github}`} target="_blank" rel="noopener noreferrer">
@@ -193,7 +218,7 @@ export default function TeamPage() {
                             <Button 
                               size="sm" 
                               variant="secondary" 
-                              className="w-8 h-8 p-0 hover:bg-blue-600 hover:text-white transition-colors"
+                              className="w-8 h-8 p-0 hover:bg-blue-600 hover:text-white transition-colors bg-white/10 border-white/20"
                               asChild
                             >
                               <Link href={member.social.linkedin} target="_blank" rel="noopener noreferrer">
@@ -228,17 +253,17 @@ export default function TeamPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-                      <p className="text-primary font-medium mb-2">{member.role}</p>
-                      <div className="flex items-center text-sm text-muted-foreground mb-3">
-                        <MapPin className="w-4 h-4 mr-1" />
+                    <div className="p-6 bg-gray-900/30">
+                      <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                      <p className="text-blue-400 font-medium mb-3">{member.role}</p>
+                      <div className="flex items-center text-sm text-gray-400 mb-4">
+                        <MapPin className="w-4 h-4 mr-2" />
                         {member.location}
                       </div>
-                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{member.bio}</p>
-                      <div className="flex flex-wrap gap-1">
+                      <p className="text-sm text-gray-300 mb-4 leading-relaxed">{member.bio}</p>
+                      <div className="flex flex-wrap gap-2">
                         {member.skills.map((skill) => (
-                          <Badge key={skill} variant="outline" className="text-xs">
+                          <Badge key={skill} variant="outline" className="text-xs border-blue-500/30 text-blue-300 hover:bg-blue-500/10">
                             {skill}
                           </Badge>
                         ))}
