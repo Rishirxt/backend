@@ -159,11 +159,10 @@ export default function TeamPage() {
       </section>
 
       {/* Core Team */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -172,10 +171,10 @@ export default function TeamPage() {
             <Badge variant="secondary" className="mb-6 px-6 py-3 text-sm font-medium border-2 border-blue-500 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all duration-300">
               Core Team
             </Badge>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent mb-6">
               The People Behind Y-SoC
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               The dedicated organizers who make Y-SoC possible through their passion, expertise, and commitment to empowering youth in open source.
             </p>
           </motion.div>
