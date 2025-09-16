@@ -17,17 +17,14 @@ export default function SponsorsPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[80vh] flex items-center">
-        <div className="absolute inset-0">
-          <BackgroundRippleEffect
-            rows={8}
-            cols={27}
-            cellSize={56}
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+      <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
+        <BackgroundRippleEffect
+          rows={8}
+          cols={27}
+          cellSize={56}
+        />
         
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
+        <div className="relative z-10 max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={animations.slideUp.initial}
             animate={animations.slideUp.animate}
