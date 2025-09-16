@@ -256,5 +256,20 @@ export const mentors: Mentor[] = [
     timezone: "IST",
     languages: ["English", "Tamil", "Hindi"],
     linkedin: "https://in.linkedin.com/in/anita-x-43119442"
+  },
+  {
+    id: 17,
+    name: "Tejas Bakhai",
+    role: "Delivery Director",
+    company: "Atos",
+    avatar: "/placeholder-user.jpg",
+    expertise: ["Program Management", "Engagement Management", "Delivery Management", "Risk Management", "Process Management", "Business Development", "Talent Management", "Team Building", "Mentoring", "Solution Architecture", "Project Governance", "Vendor Management", "SDLC", "PMP", "SOA", "Business Analysis", "Requirements Analysis", "Pre-sales", "Integration", "CMMI", "MS Project", "J2EE", "Digital Strategy", "Customer Engagement", "Account Management", "Knowledge Management", "Software Project Management", "Offshoring"],
+    experience: "20+ years",
+    bio: "Delivery Director at Atos with 20+ years of global experience in Service Delivery Management and Engagement Management. Previously worked at Syntel Limited, HCL America Inc, and Quinnox. Expert in managing teams of 100+ people across Asia Pacific and North America. Specializes in program management, process improvement, and talent development.",
+    specialties: ["Program Management", "Engagement Management", "Delivery Management", "Risk Mitigation", "Process Management", "Business Development", "Knowledge Development", "Talent Management", "Team Building & Mentoring", "Solution Architecture", "Project Governance"],
+    availability: "Available",
+    timezone: "IST",
+    languages: ["English", "Hindi", "Marathi"],
+    linkedin: "https://www.linkedin.com/in/tejas-bakhai"
   }
 ]
