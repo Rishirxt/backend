@@ -40,7 +40,7 @@ export default function FAQPage() {
         },
         {
           question: "How long does the program run?",
-          answer: "Y-SoC runs for 6 months, from October 2025 to March 2026. The program is structured in phases: Registration & Onboarding, Community Bonding, Active Contribution, Refinement & Completion, and Final Showcase."
+          answer: "Y-SoC runs for 6 months, from November 2025 to April 2026. The program is structured in phases: Registration & Onboarding, Community Bonding, Active Contribution, Refinement & Completion, and Final Showcase."
         }
       ]
     },

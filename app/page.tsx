@@ -79,36 +79,36 @@ export default function HomePage() {
   const roles = [
     { 
       name: "Project Leads", 
-      color: "bg-blue-500", 
-      iconColor: "text-blue-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-400", 
+      iconColor: "text-blue-400",
       icon: Briefcase,
       description: "Guide and manage open-source projects" 
     },
     { 
       name: "Mentors", 
-      color: "bg-teal-500", 
-      iconColor: "text-teal-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-400", 
+      iconColor: "text-blue-400",
       icon: GraduationCap,
       description: "Share knowledge and guide newcomers" 
     },
     { 
       name: "Contributors", 
-      color: "bg-green-500", 
-      iconColor: "text-green-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-400", 
+      iconColor: "text-blue-400",
       icon: Code,
       description: "Write code and build amazing features" 
     },
     { 
       name: "Designers", 
-      color: "bg-purple-500", 
-      iconColor: "text-purple-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-400", 
+      iconColor: "text-blue-400",
       icon: Palette,
       description: "Create beautiful and intuitive interfaces" 
     },
     { 
       name: "Learners", 
-      color: "bg-orange-500", 
-      iconColor: "text-orange-500",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-400", 
+      iconColor: "text-blue-400",
       icon: BookOpen,
       description: "Start your open-source journey" 
     },
