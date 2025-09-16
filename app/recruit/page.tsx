@@ -185,34 +185,51 @@ export default function RecruitPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black scroll-smooth">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[80vh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
           <motion.div
-            className="text-center mb-12"
+            className="mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="secondary" className="mb-4 px-4 py-2">
+            <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
+              <Crown className="w-4 h-4 mr-2" />
               Join Y-SoC
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">Start Your Journey</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to join the global youth open-source community? Fill out the application below and take the first
-              step toward collaborative coding excellence.
-            </p>
           </motion.div>
+          
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Start Your</span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Journey</span>
+          </motion.h1>
+
+          <motion.p
+            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Ready to join the global youth open-source community? Fill out the application below and take the first
+            step toward collaborative coding excellence.
+          </motion.p>
         </div>
       </section>
 
       {/* Role Selection */}
-      <section className="pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -261,8 +278,8 @@ export default function RecruitPage() {
       </section>
 
       {/* Application Form */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
