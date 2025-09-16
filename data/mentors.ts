@@ -262,14 +262,14 @@ export const mentors: Mentor[] = [
     name: "Tejas Bakhai",
     role: "Delivery Director",
     company: "Atos",
-    avatar: "/placeholder-user.jpg",
+    avatar: "/tejas.jpg",
     expertise: ["Solution Architecture", "J2EE", "SOA", "SDLC", "PMP", "CMMI", "MS Project", "Integration", "Business Analysis", "Requirements Analysis", "Pre-sales", "Program Management", "Engagement Management", "Delivery Management", "Risk Management", "Process Management", "Talent Management", "Team Building", "Mentoring"],
     experience: "20+ years",
     bio: "Delivery Director at Atos with 20+ years of global experience in solution architecture, program management, and leading teams of 100+ people across Asia Pacific and North America.",
     specialties: ["Solution Architecture", "J2EE & SOA", "Program Management", "SDLC & PMP", "Team Building & Mentoring", "Business Analysis", "Process Management", "Risk Management"],
     availability: "Available",
     timezone: "IST",
-    languages: ["English", "Hindi", "Marathi"],
-    linkedin: "https://www.linkedin.com/in/tejas-bakhai"
+    languages: ["English", "Hindi", "Marathi", "Gujarati"],
+    linkedin: "https://www.linkedin.com/in/tejas-bakhai-562475b/"
   }
 ]
