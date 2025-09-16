@@ -244,17 +244,17 @@ export const mentors: Mentor[] = [
   },
   {
     id: 16,
-    name: "Priya Sharma",
-    role: "Data Scientist",
-    company: "Microsoft",
-    avatar: "/professional-headshot-of-indian-female-product-man.jpg",
-    expertise: ["Python", "R", "SQL", "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch", "Pandas", "Scikit-learn", "Jupyter", "Tableau", "Power BI"],
-    experience: "7+ years",
-    bio: "Data Scientist at Microsoft working on AI and machine learning solutions. Expert in predictive modeling, data visualization, and translating complex data insights into business value.",
-    specialties: ["Machine Learning", "Data Visualization", "Predictive Modeling", "Statistical Analysis", "Business Intelligence"],
+    name: "Dr. Anita X",
+    role: "Associate Professor",
+    company: "VIT Chennai",
+    avatar: "/placeholder-user.jpg",
+    expertise: ["Network Security", "Data Analytics", "Image Processing", "Computer Vision", "Machine Learning", "Information Security", "Research", "Academic Writing", "PhD Supervision", "Curriculum Development"],
+    experience: "15+ years",
+    bio: "Associate Professor at VIT Chennai with PhD from Anna University. Specializes in Network Security, Data Analytics, and Image Processing. Published researcher with H-index of 5 and extensive experience in academic research and mentoring students.",
+    specialties: ["Network Security Research", "Data Analytics", "Image Processing", "Academic Research", "PhD Supervision", "Curriculum Development"],
     availability: "Available",
-    timezone: "PST",
-    languages: ["English", "Hindi", "Tamil"],
-    linkedin: "https://www.linkedin.com/in/priya-sharma-datascience/"
+    timezone: "IST",
+    languages: ["English", "Tamil", "Hindi"],
+    linkedin: "https://in.linkedin.com/in/anita-x-43119442"
   }
 ]
