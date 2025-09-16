@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import GridDotBackground from "@/components/GridDotBackground"
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { animations, getTransition } from "@/lib/animations"
@@ -19,14 +19,10 @@ export default function SponsorsPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[80vh] flex items-center">
         <div className="absolute inset-0">
-          <GridDotBackground
-            dotSize={2}
-            dotSpacing={40}
-            dotColor="#8b5cf6"
-            backgroundColor="transparent"
-            opacity={0.3}
-            animationSpeed={0.7}
-            pulseIntensity={0.4}
+          <BackgroundRippleEffect
+            rows={8}
+            cols={27}
+            cellSize={56}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
