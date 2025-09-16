@@ -157,7 +157,7 @@ export default function HomePage() {
               >
                 <Badge variant="secondary" className="mb-4 px-6 py-3 text-sm font-medium border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300 text-white">
                   <Calendar className="w-4 h-4 mr-2" />
-                  October 2025 - March 2026
+                  November 2025 - April 2026
                 </Badge>
               </motion.div>
             </div>
