@@ -108,7 +108,7 @@ export default function TeamPage() {
 
       {/* Hero Section */}
       <section className="pt-32 relative overflow-hidden">
-        <BackgroundBeamsWithCollision className="h-[40rem] bg-gradient-to-b from-black to-gray-900">
+        <BackgroundBeamsWithCollision className="h-[40rem]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               className="text-center"
