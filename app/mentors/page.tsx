@@ -135,13 +135,13 @@ export default function MentorsPage() {
                     {mentor.expertise.slice(0, 3).map((skill) => (
                       <span 
                         key={skill} 
-                        className="px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-600 hover:border-blue-500/50 transition-colors duration-300"
+                        className="px-3 py-1 bg-gray-900/80 text-blue-400 text-xs rounded-full border border-blue-500/50 hover:border-blue-400 hover:bg-blue-500/10 transition-all duration-300"
                       >
                         {skill}
                       </span>
                     ))}
                     {mentor.expertise.length > 3 && (
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-600">
+                      <span className="px-3 py-1 bg-gray-900/80 text-blue-400 text-xs rounded-full border border-blue-500/50 hover:border-blue-400 hover:bg-blue-500/10 transition-all duration-300">
                         +{mentor.expertise.length - 3} more
                       </span>
                     )}
