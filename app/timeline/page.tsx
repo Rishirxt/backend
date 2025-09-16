@@ -7,15 +7,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Particles from "@/components/Particles"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { animations, getTransition } from "@/lib/animations"
 import { Calendar, Users, Lightbulb, Code, Trophy, Star, ArrowRight, CheckCircle, Clock } from "lucide-react"
 
 export default function TimelinePage() {
-  // Scroll-based animation for the moving blue ball
-  const { scrollYProgress } = useScroll()
-  // Calculate the ball position based on timeline progress
-  const ballY = useTransform(scrollYProgress, [0, 0.3, 1], ["0%", "50%", "100%"])
 
   const timelineEvents = [
     {
@@ -146,17 +142,14 @@ export default function TimelinePage() {
           </motion.div>
 
           <div className="relative">
-            {/* Timeline Line - Hidden on mobile, visible on desktop */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-600 via-gray-500 to-gray-600 transform -translate-x-1/2 shadow-lg shadow-gray-500/20" />
-            
-            {/* Mobile Timeline Line */}
-            <div className="md:hidden absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-600 via-gray-500 to-gray-600 shadow-lg shadow-gray-500/20" />
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-600 via-gray-500 to-gray-600 transform -translate-x-1/2 shadow-lg shadow-gray-500/20" />
 
-            {/* Static Timeline Dots - Desktop */}
+            {/* Timeline Dots */}
             {timelineEvents.map((event, index) => (
               <div
-                key={`dot-desktop-${event.month}`}
-                className={`hidden md:block absolute left-1/2 w-4 h-4 rounded-full transform -translate-x-1/2 z-10 ${
+                key={`dot-${event.month}`}
+                className={`absolute left-1/2 w-4 h-4 rounded-full transform -translate-x-1/2 z-10 ${
                   event.status === "current" 
                     ? "bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/50" 
                     : "bg-gray-600 shadow-lg shadow-gray-500/30"
@@ -167,71 +160,8 @@ export default function TimelinePage() {
               />
             ))}
 
-            {/* Static Timeline Dots - Mobile */}
-            {timelineEvents.map((event, index) => (
-              <div
-                key={`dot-mobile-${event.month}`}
-                className={`md:hidden absolute left-8 w-4 h-4 rounded-full transform -translate-x-1/2 z-10 ${
-                  event.status === "current" 
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg shadow-blue-500/50" 
-                    : "bg-gray-600 shadow-lg shadow-gray-500/30"
-                }`}
-                style={{
-                  top: `${index * 20}rem` // Position dots at correct intervals
-                }}
-              />
-            ))}
 
-            {/* Animated Moving Blue Ball - Desktop */}
-            <motion.div
-              className="hidden md:block absolute left-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 transform -translate-x-1/2 z-20"
-              style={{
-                y: ballY,
-                top: "-12px" // Start slightly above the first dot
-              }}
-              animate={{
-                boxShadow: [
-                  "0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3)",
-                  "0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4)",
-                  "0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3)"
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              {/* Inner glow effect */}
-              <div className="absolute inset-1 rounded-full bg-white/20 blur-sm" />
-            </motion.div>
-
-            {/* Animated Moving Blue Ball - Mobile */}
-            <motion.div
-              className="md:hidden absolute left-8 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 transform -translate-x-1/2 z-20"
-              style={{
-                y: ballY,
-                top: "-12px" // Start slightly above the first dot
-              }}
-              animate={{
-                boxShadow: [
-                  "0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3)",
-                  "0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4)",
-                  "0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3)"
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              {/* Inner glow effect */}
-              <div className="absolute inset-1 rounded-full bg-white/20 blur-sm" />
-            </motion.div>
-
-
-            <div className="space-y-20 md:space-y-24">
+            <div className="space-y-16">
               {timelineEvents.map((event, index) => (
                 <motion.div
                   key={event.month}
@@ -239,68 +169,48 @@ export default function TimelinePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 
-                      ? "md:flex-row" 
-                      : "md:flex-row-reverse"
-                  }`}
+                  className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
                   {/* Content Card */}
                   <div
-                    className={`w-full md:w-5/12 ${
-                      index % 2 === 0 
-                        ? "md:mr-auto md:pr-12 ml-20 md:ml-0" 
-                        : "md:ml-auto md:pl-12 ml-20 md:ml-0"
+                    className={`w-full md:w-5/12 ml-16 md:ml-0 ${
+                      index % 2 === 0 ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
                     }`}
                   >
                     <div 
-                      className="bg-[#1a1a2e] rounded-2xl p-8 border border-gray-600/40 hover:border-gray-500/60 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                      className="bg-[#1a1a2e] rounded-2xl p-6 border border-gray-600/40 hover:border-gray-500/60 transition-all duration-300 shadow-lg hover:shadow-xl"
                       style={{
                         borderLeftColor: event.accentColor,
                         borderLeftWidth: '4px'
                       }}
                     >
-                      {/* Header Section */}
-                      <div className="flex items-start gap-6 mb-6">
+                      <div className="flex items-start gap-4 mb-4">
                         <div
-                          className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg"
+                          className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                           style={{
                             backgroundColor: event.accentColor,
-                            boxShadow: `0 0 25px ${event.accentColor}50, 0 0 50px ${event.accentColor}20`
+                            boxShadow: `0 0 20px ${event.accentColor}40`
                           }}
                         >
-                          <event.icon className="w-8 h-8 text-white" />
+                          <event.icon className="w-6 h-6 text-white" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          {/* Phase and Status */}
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-                            <span className="text-lg font-semibold text-gray-300 tracking-wide">
-                              {event.month}
-                            </span>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-sm font-medium text-gray-300">{event.month}</span>
                             <span 
-                              className="px-4 py-2 rounded-full text-sm font-semibold w-fit"
+                              className="px-3 py-1 rounded-full text-xs font-semibold"
                               style={{
-                                backgroundColor: `${event.accentColor}15`,
+                                backgroundColor: `${event.accentColor}20`,
                                 color: event.accentColor,
-                                border: `1px solid ${event.accentColor}30`
+                                border: `1px solid ${event.accentColor}40`
                               }}
                             >
-                              {event.status === "current" ? "Current Phase" : "Upcoming"}
+                              {event.status === "current" ? "Current" : "Upcoming"}
                             </span>
                           </div>
-                          
-                          {/* Title */}
-                          <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
-                            {event.title}
-                          </h3>
+                          <h3 className="text-xl font-bold text-white mb-3">{event.title}</h3>
+                          <p className="text-gray-200 leading-relaxed">{event.description}</p>
                         </div>
-                      </div>
-
-                      {/* Description */}
-                      <div className="pl-0 md:pl-22">
-                        <p className="text-gray-200 leading-relaxed text-lg">
-                          {event.description}
-                        </p>
                       </div>
                     </div>
                   </div>
