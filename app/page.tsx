@@ -12,6 +12,8 @@ import { useEffect, useState, useCallback, useMemo, lazy, Suspense } from "react
 import { animations, getTransition } from "@/lib/animations"
 
 // Lazy load heavy WebGL components for better performance
+const Plasma = lazy(() => import("@/components/Plasma"))
+const PixelBlast = lazy(() => import("@/components/PixelBlast"))
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -126,51 +128,29 @@ export default function HomePage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen flex items-center">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <motion.div 
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
         
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
         
-        {/* Subtle gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
+        {/* Animated Plasma Background */}
+        <div className="absolute inset-0 opacity-90 dark:opacity-30">
+          <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5" />}>
+            <Plasma
+              color="#a259ff"
+              speed={0.8}
+              direction="horizontal"
+              scale={1.0}
+              opacity={0.6}
+              mouseInteractive={false}
+            />
+          </Suspense>
+        </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              initial={animations.scale.initial}
-              animate={animations.scale.animate}
-              transition={getTransition(0.6)}
-              className="mb-6"
-            >
+          <div className="text-center">
+            <div className="mb-6">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -180,14 +160,9 @@ export default function HomePage() {
                   October 2025 - March 2026
                 </Badge>
               </motion.div>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated"
-              initial={animations.slideUp.initial}
-              animate={animations.slideUp.animate}
-              transition={getTransition(0.8)}
-            >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight gpu-accelerated">
               <motion.span 
                 className="gradient-text inline-block"
                 whileHover={animations.hover}
@@ -203,21 +178,11 @@ export default function HomePage() {
               >
                 of Code
               </motion.span>
-            </motion.h1>
+            </h1>
 
-            <motion.div
-              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto"
-              initial={animations.slideUp.initial}
-              animate={animations.slideUp.animate}
-              transition={getTransition(0.6)}
-            >
-              <motion.div 
-                className="space-y-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                <motion.div 
+            <div className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+              <div className="space-y-2">
+                <div 
                   className="font-semibold text-foreground"
                   style={{
                     background: "linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6)",
@@ -228,17 +193,12 @@ export default function HomePage() {
                   }}
                 >
                   You Code, You Create, You Collaborate
-                </motion.div>
+                </div>
                 <div>Join the global youth open-source community and build the future together</div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-              initial={animations.slideUp.initial}
-              animate={animations.slideUp.animate}
-              transition={getTransition(0.6)}
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <motion.div
                 whileHover={animations.hover}
                 whileTap={animations.button.whileTap}
@@ -280,59 +240,28 @@ export default function HomePage() {
                   <Link href="/about">Learn More</Link>
                 </Button>
               </motion.div>
-            </motion.div>
+            </div>
 
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
-        {/* Optimized floating particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {useMemo(() => 
-            [...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-primary/20 rounded-full gpu-accelerated"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.2, 0.8, 0.2],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 4 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                  ease: "easeInOut",
-                }}
-              />
-            )), [])
-          }
-        </div>
+        {/* Subtle background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Why Join Y-SoC?</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Experience the power of collaborative coding and accelerate your development journey
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
@@ -372,18 +301,12 @@ export default function HomePage() {
       {/* Roles Section */}
       <section id="roles" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-6">Find Your Role</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Whether you're a beginner or expert, there's a place for you in our community
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-5xl mx-auto">
             {/* First Row - 3 roles */}
@@ -391,10 +314,10 @@ export default function HomePage() {
               {roles.slice(0, 3).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  whileInView={animations.scale.animate}
+                  transition={getTransition(0.4)}
+                  viewport={animations.scrollReveal.viewport}
+                  whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -424,10 +347,10 @@ export default function HomePage() {
               {roles.slice(3, 5).map((role, index) => (
                 <motion.div
                   key={role.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                  viewport={{ once: true }}
+                  whileInView={animations.scale.animate}
+                  transition={getTransition(0.4)}
+                  viewport={animations.scrollReveal.viewport}
+                  whileHover={animations.card.whileHover}
                   className="cursor-pointer group"
                 >
                   <div className="h-full text-center rounded-2xl border border-gray-700/30 bg-gray-900/50 backdrop-blur-sm hover:border-gray-600/50 hover:shadow-xl transition-all duration-300">
@@ -460,21 +383,39 @@ export default function HomePage() {
         {/* Light mode contrast overlay */}
         <div className="absolute inset-0 bg-white/5 dark:bg-transparent" />
         
-        {/* Subtle gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10" />
+        {/* PixelBlast Interactive Background */}
+        <div className="absolute inset-0 opacity-60 dark:opacity-40">
+          <Suspense fallback={<div className="w-full h-full bg-gradient-to-r from-primary/10 to-secondary/10" />}>
+            <PixelBlast
+              variant="circle"
+              pixelSize={6}
+              color="#B19EEF"
+              patternScale={3}
+              patternDensity={1.2}
+              pixelSizeJitter={0.5}
+              enableRipples
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid
+              liquidStrength={0.12}
+              liquidRadius={1.2}
+              liquidWobbleSpeed={5}
+              speed={0.6}
+              edgeFade={0.25}
+              transparent
+            />
+          </Suspense>
+        </div>
         
        
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <motion.div
               whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.3 }
+                scale: 1.1,
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.5 }
               }}
             >
               <Trophy className="w-16 h-16 mx-auto mb-6 text-primary drop-shadow-lg" />
@@ -488,22 +429,10 @@ export default function HomePage() {
             >
               Ready to Start Coding?
             </motion.h2>
-            <motion.p 
-              className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join thousands of young developers building the future of open source. Your journey starts here.
-            </motion.p>
-            <motion.div 
-              className="flex justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
+            </p>
+            <div className="flex justify-center">
               <motion.div
                 whileHover={animations.hover}
                 whileTap={animations.button.whileTap}
@@ -519,8 +448,8 @@ export default function HomePage() {
                   </Link>
                 </Button>
               </motion.div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -531,7 +460,6 @@ export default function HomePage() {
       <motion.button
         onClick={scrollToTop}
         className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
-        initial={{ opacity: 0, scale: 0 }}
         animate={{ 
           opacity: showScrollTop ? 1 : 0,
           scale: showScrollTop ? 1 : 0
