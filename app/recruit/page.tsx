@@ -1,10 +1,11 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
+import { createClient } from "@supabase/supabase-js" // Import the Supabase client
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,8 +14,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { motion } from "framer-motion"
-import { useState } from "react"
-import { Crown, Users, Code, Palette, GraduationCap, Send, CheckCircle, AlertCircle, Briefcase, BookOpen, Mail, MapPin, Briefcase as BriefcaseIcon, Star, Link as LinkIcon, Clock, Heart } from "lucide-react"
+import { Crown, Users, Code, Palette, GraduationCap, Send, CheckCircle, AlertCircle, Briefcase, BookOpen, Mail, MapPin, Star, Link as LinkIcon, Clock, Heart } from "lucide-react"
+
+// Initialize Supabase client
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ""
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
+const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export default function RecruitPage() {
   const [formData, setFormData] = useState({
@@ -28,7 +33,7 @@ export default function RecruitPage() {
     motivation: "",
     portfolio: "",
     github: "",
-    linkedin: "",
+    linkedin: "", // Added to match the form structure
     availability: "",
     agreeTerms: false,
     agreeNewsletter: false,
@@ -37,126 +42,74 @@ export default function RecruitPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState("")
-  const [submitSuccess, setSubmitSuccess] = useState("")
 
   const roles = [
-    {
-      value: "project-lead",
-      label: "Project Lead",
-      icon: Briefcase,
-      description: "Guide and manage open-source projects",
-      color: "text-blue-500",
-      iconColor: "text-blue-500",
-    },
-    {
-      value: "mentor",
-      label: "Mentor",
-      icon: GraduationCap,
-      description: "Share knowledge and guide newcomers",
-      color: "text-teal-500",
-      iconColor: "text-teal-500",
-    },
-    {
-      value: "contributor",
-      label: "Contributor",
-      icon: Code,
-      description: "Write code and build amazing features",
-      color: "text-green-500",
-      iconColor: "text-green-500",
-    },
-    {
-      value: "designer",
-      label: "Designer",
-      icon: Palette,
-      description: "Create beautiful and intuitive interfaces",
-      color: "text-purple-500",
-      iconColor: "text-purple-500",
-    },
-    {
-      value: "learner",
-      label: "Learner",
-      icon: BookOpen,
-      description: "Start your open-source journey",
-      color: "text-orange-500",
-      iconColor: "text-orange-500",
-    },
+    { value: "project-lead", label: "Project Lead", icon: Briefcase, description: "Guide and manage open-source projects", color: "text-blue-500", iconColor: "text-blue-500" },
+    { value: "mentor", label: "Mentor", icon: GraduationCap, description: "Share knowledge and guide newcomers", color: "text-teal-500", iconColor: "text-teal-500" },
+    { value: "contributor", label: "Contributor", icon: Code, description: "Write code and build amazing features", color: "text-green-500", iconColor: "text-green-500" },
+    { value: "designer", label: "Designer", icon: Palette, description: "Create beautiful and intuitive interfaces", color: "text-purple-500", iconColor: "text-purple-500" },
+    { value: "learner", label: "Learner", icon: BookOpen, description: "Start your open-source journey", color: "text-orange-500", iconColor: "text-orange-500" },
   ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitError("")
-    setSubmitSuccess("")
 
-    try {
-      // Prepare data for the Flask backend
-      const submissionData = {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        country: formData.country,
-        role: formData.role,
-        experience_level: formData.experience,
-        technical_skills: formData.skills,
-        why_join: formData.motivation,
-        github: formData.github,
-        portfolio: formData.portfolio,
-        time_commitment: formData.availability,
-        agree_terms: formData.agreeTerms,
-        updates_subscription: formData.agreeNewsletter
-      }
-
-      // Send data to Flask backend
-      const response = await fetch('https://ysoc-backend.onrender.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    const { data, error } = await supabase
+      .from("applications")
+      .insert([
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          country: formData.country,
+          role: formData.role,
+          experience_level: formData.experience,
+          technical_skills: formData.skills,
+          why_join: formData.motivation,
+          github: formData.github,
+          portfolio: formData.portfolio,
+          linkedin: formData.linkedin,
+          time_commitment: formData.availability,
+          agree_terms: formData.agreeTerms,
+          updates_subscription: formData.agreeNewsletter,
         },
-        body: JSON.stringify(submissionData),
-        mode: 'cors'
+      ])
+      .select()
+
+    if (error) {
+      console.error("Supabase submission error:", error)
+      setSubmitError("Failed to submit application. Please try again.")
+    } else {
+      setIsSubmitted(true)
+      // Clear form data after successful submission
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        country: "",
+        role: "",
+        experience: "",
+        skills: "",
+        motivation: "",
+        portfolio: "",
+        github: "",
+        linkedin: "",
+        availability: "",
+        agreeTerms: false,
+        agreeNewsletter: false,
       })
-
-      const result = await response.json()
-
-      // Check if submission was successful based on backend response
-      if (response.ok && result.success === true) {
-        setSubmitSuccess('Application submitted successfully!')
-        setSubmitError("")
-        // Clear form after successful submission
-        setTimeout(() => {
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            country: "",
-            role: "",
-            experience: "",
-            skills: "",
-            motivation: "",
-            portfolio: "",
-            github: "",
-            linkedin: "",
-            availability: "",
-            agreeTerms: false,
-            agreeNewsletter: false,
-          })
-          setSubmitSuccess("")
-        }, 3000)
-      } else {
-        setSubmitError(result.message || result.error || 'Submission failed')
-        setSubmitSuccess("")
-      }
-    } catch (error) {
-      setSubmitError('Failed to submit application. Please try again.')
-      setSubmitSuccess("")
-    } finally {
-      setIsSubmitting(false)
     }
+    setIsSubmitting(false)
   }
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
+
+  // The rest of the component's JSX remains largely the same, with minor adjustments
+  // to the form element to include the new 'linkedin' field.
 
   if (isSubmitted) {
     return (
@@ -251,8 +204,8 @@ export default function RecruitPage() {
                   <div
                     className={`h-full rounded-2xl border transition-all duration-300 ease-in-out ${
                       formData.role === role.value
-                        ? "border-blue-500/70 shadow-lg shadow-blue-500/20 scale-105 bg-blue-500/10"
-                        : "border-gray-700/30 hover:border-gray-600/50 hover:shadow-md bg-gray-900/50"
+                          ? "border-blue-500/70 shadow-lg shadow-blue-500/20 scale-105 bg-blue-500/10"
+                          : "border-gray-700/30 hover:border-gray-600/50 hover:shadow-md bg-gray-900/50"
                     }`}
                   >
                     <div className="p-6 text-center">
@@ -468,6 +421,16 @@ export default function RecruitPage() {
                           className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
                         />
                       </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="linkedin" className="text-gray-300 font-medium">LinkedIn Profile</Label>
+                        <Input
+                          id="linkedin"
+                          placeholder="https://linkedin.com/in/username"
+                          value={formData.linkedin}
+                          onChange={(e) => handleInputChange("linkedin", e.target.value)}
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -558,15 +521,6 @@ export default function RecruitPage() {
                   </div>
 
                   {/* Submit Button */}
-                  {submitSuccess && (
-                    <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg mb-4">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                        <p className="text-green-500 font-medium">{submitSuccess}</p>
-                      </div>
-                    </div>
-                  )}
-                  
                   {submitError && (
                     <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg mb-4">
                       <div className="flex items-center gap-2">

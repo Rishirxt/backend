@@ -1,20 +1,20 @@
-"use client"
+// src/app/contact/page.tsx or where your component is located
+"use client";
+import type React from "react";
+import { useState } from "react";
+import { Mail, Send, CheckCircle, MapPin, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
-import type React from "react"
-
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { motion } from "framer-motion"
-import { animations, getTransition } from "@/lib/animations"
-import { useState } from "react"
-import { Mail, Send, CheckCircle, MapPin, Clock, Users } from "lucide-react"
+// Import components and supabase client
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { supabase } from "@/lib/supabaseClient"; // <-- Import the supabase client
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -23,11 +23,12 @@ export default function ContactPage() {
     subject: "",
     category: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // (Keep contactCategories and contactInfo arrays the same)
   const contactCategories = [
     { value: "general", label: "General Inquiry" },
     { value: "partnership", label: "Partnership Opportunities" },
@@ -35,7 +36,7 @@ export default function ContactPage() {
     { value: "media", label: "Media & Press" },
     { value: "technical", label: "Technical Support" },
     { value: "feedback", label: "Feedback & Suggestions" },
-  ]
+  ];
 
   const contactInfo = [
     {
@@ -52,42 +53,37 @@ export default function ContactPage() {
       contact: "25+ countries",
       action: "",
     },
-  ]
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      // Send data to Flask backend API
-      const response = await fetch('https://ysoc-backend.onrender.com/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      // Use the Supabase client to insert data
+      const { error } = await supabase
+        .from("contact_submissions") // <-- Specify your table name
+        .insert([formData]); // <-- Insert the form data object
 
-      const result = await response.json()
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Failed to save form data')
+      if (error) {
+        throw new Error(error.message || "Failed to save form data");
       }
 
-      console.log("Contact form submitted and saved to Excel:", result)
-      setIsSubmitted(true)
-    } catch (error) {
-      console.error("Error saving form data:", error)
-      alert("Error saving form data. Please try again.")
+      console.log("Contact form submitted and saved to Supabase!");
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("Error saving form data:", error);
+      alert(`Error saving form data: ${error.message}. Please try again.`);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
+  // (The rest of your JSX remains the same)
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-black">
@@ -116,14 +112,12 @@ export default function ContactPage() {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-black scroll-smooth">
       <Navigation />
-
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="max-w-7xl mx-auto relative">
@@ -144,7 +138,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Methods */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50 relative overflow-hidden page-transition">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 mb-20 max-w-4xl mx-auto mt-8">
@@ -183,7 +176,6 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Contact Form */}
           <div className="max-w-4xl mx-auto mt-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -197,7 +189,6 @@ export default function ContactPage() {
                     <p className="text-gray-300">We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Personal Information */}
                     <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
                       <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                         <Users className="w-5 h-5 text-blue-400" />
@@ -230,7 +221,6 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Message Details */}
                     <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/20">
                       <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                         <Mail className="w-5 h-5 text-blue-400" />
@@ -306,5 +296,5 @@ export default function ContactPage() {
       </section>
       <Footer />
     </div>
-  )
+  );
 }
