@@ -33,10 +33,11 @@ export default function RecruitPage() {
     motivation: "",
     portfolio: "",
     github: "",
-    linkedin: "", // Added to match the form structure
+    linkedin: "",
     availability: "",
     agreeTerms: false,
     agreeNewsletter: false,
+    resumeLink: "", // Added to match the form structure
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -71,6 +72,7 @@ export default function RecruitPage() {
           github: formData.github,
           portfolio: formData.portfolio,
           linkedin: formData.linkedin,
+          resume_link: formData.resumeLink, // Added resume link to the insert object
           time_commitment: formData.availability,
           agree_terms: formData.agreeTerms,
           updates_subscription: formData.agreeNewsletter,
@@ -99,6 +101,7 @@ export default function RecruitPage() {
         availability: "",
         agreeTerms: false,
         agreeNewsletter: false,
+        resumeLink: "",
       })
     }
     setIsSubmitting(false)
@@ -107,9 +110,6 @@ export default function RecruitPage() {
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
-
-  // The rest of the component's JSX remains largely the same, with minor adjustments
-  // to the form element to include the new 'linkedin' field.
 
   if (isSubmitted) {
     return (
@@ -428,6 +428,16 @@ export default function RecruitPage() {
                           placeholder="https://linkedin.com/in/username"
                           value={formData.linkedin}
                           onChange={(e) => handleInputChange("linkedin", e.target.value)}
+                          className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="resumeLink" className="text-gray-300 font-medium">Resume Link</Label>
+                        <Input
+                          id="resumeLink"
+                          placeholder="https://docs.google.com/document/d/..."
+                          value={formData.resumeLink}
+                          onChange={(e) => handleInputChange("resumeLink", e.target.value)}
                           className="bg-gray-900/50 border-gray-600/50 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500/20 transition-all duration-200 hover:border-gray-500/50"
                         />
                       </div>
